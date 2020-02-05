@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,9 +17,15 @@ public class Writing {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long writingNo;
 
+    /*
     @OneToMany
     @JoinColumn(name = "writing_no")
     private List<WritingDtl> writingDtls;
+     */
+
+    @OneToMany
+    @JoinColumn(name = "writing_no")
+    private List<WritingDtl> writingDtls = new ArrayList<>();
 
     private String writingDivCd;
 
