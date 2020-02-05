@@ -3,10 +3,10 @@ package io.weeks.nuguya.Entity;
 import lombok.Data;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -14,8 +14,12 @@ import java.util.Date;
 public class Writing {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long writingNo;
+
+    @OneToMany
+    @JoinColumn(name = "writing_no")
+    private List<WritingDtl> writingDtls;
 
     private String writingDivCd;
 
