@@ -23,9 +23,11 @@ public class Writing {
     private List<WritingDtl> writingDtls;
      */
 
+    /*
     @OneToMany
     @JoinColumn(name = "writing_no")
     private List<WritingDtl> writingDtls = new ArrayList<>();
+    */
 
     private String writingDivCd;
 

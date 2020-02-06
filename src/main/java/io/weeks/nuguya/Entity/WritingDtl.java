@@ -3,10 +3,7 @@ package io.weeks.nuguya.Entity;
 import lombok.Data;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,6 +14,10 @@ public class WritingDtl {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long writingSeq;
+
+    @ManyToOne
+    @JoinColumn(name ="writing_no")
+    private Writing writing;
 
     private String oriImgPath1;
 
