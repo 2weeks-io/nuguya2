@@ -1,4 +1,4 @@
-package io.weeks.nuguya.MainController;
+package io.weeks.nuguya.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -35,7 +35,5 @@ public class MySqlRunner implements ApplicationRunner {
                     "PRIMARY KEY(ID))";
             //statement.executeUpdate(sql);
         }
-
-        //jdbcTemplate.execute("INSERT INTO USER VALUES(1, 'saelobi')");
     }
 }
