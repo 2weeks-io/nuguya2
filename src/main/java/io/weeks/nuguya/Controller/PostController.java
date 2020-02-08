@@ -14,13 +14,14 @@ public class PostController {
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
     @GetMapping("/getWritePage")
-    public String getWritePage(Model model){
+    public String getWritePage(Model model) {
 
         return "writing";
     }
 
-    @PostMapping("/write")
-    public @ResponseBody String write(){
+    @PostMapping("/page/write")
+    public @ResponseBody
+    String write() {
 
         return "hi";
     }

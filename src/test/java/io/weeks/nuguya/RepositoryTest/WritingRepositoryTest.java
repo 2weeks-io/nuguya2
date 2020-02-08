@@ -31,7 +31,7 @@ public class WritingRepositoryTest {
 
     @Test
     public void di() throws SQLException {
-        try(Connection connection = dataSource.getConnection()){
+        try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             System.out.println(metaData.getURL());
             System.out.println(metaData.getDriverName());
@@ -40,7 +40,7 @@ public class WritingRepositoryTest {
     }
 
     @Test
-    public void writingTest() throws SQLException{
+    public void writingTest() throws SQLException {
 
         /*
         Writing writing = new Writing();

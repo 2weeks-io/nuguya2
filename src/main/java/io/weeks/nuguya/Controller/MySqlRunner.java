@@ -1,14 +1,15 @@
 package io.weeks.nuguya.Controller;
 
+import io.weeks.config.dto.FileConfigDto;
+import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.Statement;
 
 @Component
 public class MySqlRunner implements ApplicationRunner {
@@ -19,21 +20,12 @@ public class MySqlRunner implements ApplicationRunner {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    FileConfigDto fileConfigDto;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        try(Connection connection = dataSource.getConnection()){
-            System.out.println(connection);
-            String URL = connection.getMetaData().getURL();
-            System.out.println(URL);
-            String User = connection.getMetaData().getUserName();
-            System.out.println(User);
-
-            Statement statement = connection.createStatement();
-            String sql = "CREATE TABLE USER(" +
-                    "ID INTEGER NOT NULL," +
-                    "NAME VARCHAR(255)," +
-                    "PRIMARY KEY(ID))";
-            //statement.executeUpdate(sql);
-        }
+        System.out.println(fileConfigDto.getFileUploadPath());
+        System.out.println(fileConfigDto.getApplicationName());
     }
 }

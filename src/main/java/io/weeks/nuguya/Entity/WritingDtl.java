@@ -1,5 +1,6 @@
 package io.weeks.nuguya.Entity;
 
+import io.weeks.dto.BaseDto;
 import lombok.Data;
 import lombok.ToString;
 
@@ -9,14 +10,14 @@ import java.util.Date;
 @Entity
 @Data
 @ToString
-public class WritingDtl {
+public class WritingDtl extends BaseDto {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long writingSeq;
 
     @ManyToOne
-    @JoinColumn(name ="writing_no")
+    @JoinColumn(name = "writing_no")
     private Writing writing;
 
     private String oriImgPath1;
@@ -24,13 +25,5 @@ public class WritingDtl {
     private String compoImgPath1;
 
     private String answer;
-
-    private String regpeId;
-
-    private String modpeId;
-
-    private Date modDts;
-
-    private Date regDts;
 
 }
