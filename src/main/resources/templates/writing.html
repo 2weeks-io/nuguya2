@@ -5,7 +5,7 @@
     <title>NUGUYA</title>
 </head>
 
-<script src="js/writing.js"></script>
+<script type="text/javascript" src="../js/writing.js"></script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script>
@@ -16,37 +16,36 @@
 
 <body>
 
-<div style="margin-left:100px;">
-    <h2>게임 유형 선택</h2>
-    <input type="radio" name="writingRegDivCd" value="10" checked="checked">안개
-    <input type="radio" name="writingRegDivCd" value="20">눈코입
-</div>
+<form action="/write" method="post" enctype="multipart/form-data">
 
-<div id="writingRegDivCd10" style="margin-left:100px;">
+    <div style="margin-left:100px;">
+        <h2>게임 유형 선택</h2>
+        <input type="radio" name="writingDivCd" value="10" checked="checked">안개
+        <input type="radio" name="writingDivCd" value="20">눈코입
+    </div>
 
-    <form action="/write" method="post" enctype="multipart/form-data">
-
+    <div id="writingRegDivCd10" style="margin-left:100px;">
         <p> 제목: <input type="text" id="title" name="title" style="width:200px"></p>
         <p> 게임설명 </p>
-        <textarea id="writingExplain" style="width:500px;height:200px"> </textarea>
+        <textarea id="writingExplain" name="writingExplain" style="width:500px;height:200px"> </textarea>
 
         <p>
             대표이미지: <input type="file" id="titleImg" name="titleImg" style="width:200px">
         </p>
         <p>
-            배너이미지1: <input type="file" id="banImg1" name="banImg1" style="width:200px">
+            배너이미지1: <input type="file" id="banImg1" name="banImg" style="width:200px">
         </p>
         <p>
-            배너이미지2: <input type="file" id="banImg2" name="banImg2" style="width:200px">
+            배너이미지2: <input type="file" id="banImg2" name="banImg" style="width:200px">
         </p>
         <p>
-            배너이미지3: <input type="file" id="banImg3" name="banImg2" style="width:200px">
+            배너이미지3: <input type="file" id="banImg3" name="banImg" style="width:200px">
         </p>
         <p>
-            배너이미지4: <input type="file" id="banImg4" name="banImg2" style="width:200px">
+            배너이미지4: <input type="file" id="banImg4" name="banImg" style="width:200px">
         </p>
         <p>
-            배너이미지5: <input type="file" id="banImg5" name="banImg2" style="width:200px">
+            배너이미지5: <input type="file" id="banImg5" name="banImg" style="width:200px">
         </p>
         <p>
             구글에서 가져올 이미지 키워드를 넣어주세요 <br>
@@ -54,13 +53,16 @@
         </p>
 
         <button type="submit">게시글 업로드</button>
+    </div>
 
-    </form>
-</div>
+    <div id="writingRegDivCd20" style="display:none;margin-left:100px;">
+        히든영역
+    </div>
 
-<div id="writingRegDivCd20" style="display:none;margin-left:100px;">
-    히든영역
-</div>
+</form>
+
+
+
 
 </body>
 </html>

@@ -1,19 +1,18 @@
 package io.weeks.nuguya.Entity;
 
-import io.weeks.dto.BaseDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.weeks.dto.BaseTimeEntity;
 import lombok.Data;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Data
 @ToString
-public class Writing extends BaseDto {
+@Table(name = "writing")
+public class Writing extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +41,9 @@ public class Writing extends BaseDto {
     private int score;
 
     private int particiNum;
+
+    private String regpeId;
+
+    private String modpeId;
 
 }

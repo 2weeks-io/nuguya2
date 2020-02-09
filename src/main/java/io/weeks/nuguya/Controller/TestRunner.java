@@ -1,5 +1,7 @@
 package io.weeks.nuguya.Controller;
 
+import io.weeks.FileService.FileService;
+import io.weeks.config.configuration.WebConfig;
 import io.weeks.config.dto.FileConfigDto;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 
 @Component
-public class MySqlRunner implements ApplicationRunner {
+public class TestRunner implements ApplicationRunner {
 
     @Autowired
     DataSource dataSource;
@@ -23,9 +25,13 @@ public class MySqlRunner implements ApplicationRunner {
     @Autowired
     FileConfigDto fileConfigDto;
 
+    @Autowired
+    FileService fileService;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println(fileConfigDto.getFileUploadPath());
         System.out.println(fileConfigDto.getApplicationName());
+        System.out.println(fileService.toString());
     }
 }

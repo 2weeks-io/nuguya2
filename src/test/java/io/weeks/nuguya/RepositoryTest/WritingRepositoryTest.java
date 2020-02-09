@@ -42,13 +42,15 @@ public class WritingRepositoryTest {
     @Test
     public void writingTest() throws SQLException {
 
-        /*
+
         Writing writing = new Writing();
         writing.setTitle("jpa test");
 
         Writing newWriting = writingRepository.save(writing);
+        System.out.println(newWriting.toString());
         assertThat(newWriting).isNotNull();
 
+        /*
         Writing existingWriting = writingRepository.findByTitle(newWriting.getTitle());
         assertThat(existingWriting).isNotNull();
 

@@ -1,16 +1,16 @@
 package io.weeks.nuguya.Entity;
 
-import io.weeks.dto.BaseDto;
+import io.weeks.dto.BaseTimeEntity;
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Data
 @ToString
-public class WritingDtl extends BaseDto {
+@Table(name = "WRITING_DTL")
+public class WritingDtl extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
