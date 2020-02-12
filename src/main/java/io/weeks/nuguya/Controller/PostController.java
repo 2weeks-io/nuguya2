@@ -29,6 +29,12 @@ public class PostController {
         return "writing";
     }
 
+    @GetMapping("/test/http")
+    public @ResponseBody String httpTest(){
+
+        return "test";
+    }
+
     @PostMapping("/write")
     public @ResponseBody String write(HttpServletRequest request, HttpSession session, Writing writing) throws Exception{
 
