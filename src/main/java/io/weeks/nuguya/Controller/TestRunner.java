@@ -28,10 +28,14 @@ public class TestRunner implements ApplicationRunner {
     @Autowired
     FileService fileService;
 
+    @Autowired
+    WebConfig webConfig;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println(fileConfigDto.getFileUploadPath());
         System.out.println(fileConfigDto.getApplicationName());
         System.out.println(fileService.toString());
+        System.out.println(webConfig.toString());
     }
 }
