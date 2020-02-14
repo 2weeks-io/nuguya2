@@ -31,6 +31,8 @@ public class CrawlingService {
 
         try {
 
+            System.out.println("requestUrl : " + requestUrl);
+
             json = restTemplate.getForObject(requestUrl, String.class);
 
             JSONParser jsonParser = new JSONParser();

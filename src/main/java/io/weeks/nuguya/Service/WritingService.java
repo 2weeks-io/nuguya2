@@ -55,6 +55,7 @@ public class WritingService {
             String crawlingNum = Integer.toString(crawlingDto.getCrawlingNum());
 
             String requestUrl = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
+
             crawlingDto.setRequestUrl(requestUrl);
 
             //제목 이미지 업로드 및 경로 세팅
