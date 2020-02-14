@@ -54,7 +54,7 @@ public class WritingService {
             String keywords = crawlingDto.getSrhchKeywords();
             String crawlingNum = Integer.toString(crawlingDto.getCrawlingNum());
 
-            String requestUrl = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
+            String requestUrl = crawlingUrl + appName + "/" + keywords + "/" + crawlingNum;
 
             crawlingDto.setRequestUrl(requestUrl);
 
@@ -111,7 +111,10 @@ public class WritingService {
                         System.out.println(fileInfoObj.toString());
 
                         //이미지 경로 저장
-                        writingDtl.setOriImgPath1(fileInfoObj.toString());
+
+                        String resourcePath = "/assets/nuguya" + fileInfoObj.toString();
+
+                        writingDtl.setOriImgPath1(resourcePath);
                         writingDtl.setWriting(writing);
                         writingDtlRepository.save(writingDtl);
 
