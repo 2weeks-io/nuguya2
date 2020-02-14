@@ -54,7 +54,7 @@ public class WritingService {
             String keywords = crawlingDto.getSrhchKeywords();
             String crawlingNum = Integer.toString(crawlingDto.getCrawlingNum());
 
-            String requestUrl = crawlingUrl + appName + "/" + keywords + "/" + crawlingNum;
+            String requestUrl = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
 
             crawlingDto.setRequestUrl(requestUrl);
 
