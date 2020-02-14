@@ -1,5 +1,6 @@
 package io.weeks.nuguya.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.weeks.dto.BaseTimeEntity;
 import lombok.Data;
 import lombok.ToString;
@@ -18,6 +19,7 @@ public class WritingDtl extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "writing_no")
+    @JsonBackReference
     private Writing writing;
 
     private String oriImgPath1;

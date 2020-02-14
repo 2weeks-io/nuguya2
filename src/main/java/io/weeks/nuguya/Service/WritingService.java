@@ -10,6 +10,9 @@ import io.weeks.nuguya.dto.CrawlingDto;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -34,22 +37,28 @@ public class WritingService {
     @Autowired
     WritingDtlRepository writingDtlRepository;
 
+    @Value("${weeks.crawlingServer.url}")
+    private String crawlingUrl;
+
+    /*
+     ** 게임 게시글 업로드
+     */
     public void insertWriting(Writing writing, CrawlingDto crawlingDto, MultipartHttpServletRequest multipartRequest) throws Exception{
 
         try {
             String appName = fileConfigDto.getApplicationName();
-            String fileUploadPath = fileConfigDto.getFileUploadPath();
-            String path = fileUploadPath + fileService.makeSaveFilePath(appName);
+            String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
+            String saveFilePath = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
+            String path = fileUploadPath + saveFilePath;
 
-            String url = "http://localhost:5000/crawling/image/";
             String keywords = crawlingDto.getSrhchKeywords();
             String crawlingNum = Integer.toString(crawlingDto.getCrawlingNum());
 
-            String requestUrl = url + "/" + appName + "/" + keywords + "/" + crawlingNum;
+            String requestUrl = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
             crawlingDto.setRequestUrl(requestUrl);
 
             //제목 이미지 업로드 및 경로 세팅
-            String titleImgPath = fileService.restore(multipartRequest.getFile("titleImg"), path);
+            String titleImgPath = "/assets/" + appName + saveFilePath + fileService.restore(multipartRequest.getFile("titleImg"), path);
             writing.setTitleImgPath(titleImgPath);
 
             List<MultipartFile> banImgFileList = multipartRequest.getFiles("banImg");
@@ -60,7 +69,7 @@ public class WritingService {
                     if("".equals(banImgFileList.get(j).getOriginalFilename())){
                         break;
                     } else{
-                        String banImgPath   = fileService.restore(banImgFileList.get(j), path);
+                        String banImgPath   = "/assets/" + appName + saveFilePath + fileService.restore(banImgFileList.get(j), path);
                         this.setBanImgPath(writing, banImgPath, j);
                     }
                 }
@@ -133,16 +142,10 @@ public class WritingService {
 
     }
 
-    public JSONObject getMainWriting() throws Exception{
+    public Page<Writing> getMainWriting(Pageable pageable) throws Exception{
 
-        JSONObject jsonObject = new JSONObject();
-
-        //List<Writing> writingList = writingRepository.findAll();
-
-        Long tt = 20L;
-        List<Writing> writingList = writingRepository.findAll();
-        jsonObject.put("writingList", writingList);
-        return jsonObject;
+        return writingRepository.findAll(pageable);
     }
+
 
 }

@@ -1,6 +1,7 @@
 package io.weeks.nuguya.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.weeks.dto.BaseTimeEntity;
 import lombok.Data;
 import lombok.ToString;
@@ -21,6 +22,7 @@ public class Writing extends BaseTimeEntity {
     private Long writingNo;
 
     @OneToMany(mappedBy="writing")
+    @JsonManagedReference
     private List<WritingDtl> writingDtlList = new ArrayList<WritingDtl>();
 
     private String writingDivCd;
