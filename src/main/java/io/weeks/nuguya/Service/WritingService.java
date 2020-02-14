@@ -85,10 +85,15 @@ public class WritingService {
 
                     String keyword = keywordArray[j];
 
-                    System.out.println("test");
+                    System.out.println("keyword : " + keyword);
                     //키워드별로 저장 위치 출력
                     JSONArray imageList = (JSONArray) jsonObject.get(keyword);
-                    System.out.println(imageList.toString());
+
+                    if(imageList == null){
+                        System.out.println("imageList is null");
+                        continue;
+                    }
+
                     int imageLen = imageList.size();
 
                     for (int i = 0; i < imageLen; i++) {
