@@ -1,9 +1,8 @@
 package io.weeks.nuguya.Controller;
 
 import io.weeks.nuguya.Entity.Writing;
-import io.weeks.nuguya.Repository.WritingRepository;
+import io.weeks.nuguya.Entity.WritingDtl;
 import io.weeks.nuguya.Service.WritingService;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,24 +15,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class MainController {
+public class DetailController {
 
     @Autowired
     private WritingService writingService;
 
-    @GetMapping(value ="/writings/{pageNum}/{pageSize}", produces = "application/json; charset=UTF-8")
-    public Map<String,Object> getWritings(Pageable pageable, @PathVariable Integer pageNum, @PathVariable Integer pageSize) throws Exception{
+    @GetMapping("/writing/{writingNo}")
+    public Map<String,Object> getWriting(Pageable pageable, @PathVariable Long writingNo) throws Exception{
 
         String resultMsg = "success";
 
-        pageable = PageRequest.of(pageNum, pageSize);
+        Writing writing = new Writing();
+        writing.setWritingNo(writingNo);
 
-        Page<Writing>  writingList = writingService.getMainWriting(pageable);
+        writing = writingService.getWriting(writing);
+
+        /*
+        WritingDtl writingDtl = new WritingDtl();
+        writingDtl.setWriting(writing);
+
+        Page<WritingDtl> writingDtls = writingService.getWritingDtl(pageable, writingDtl);
+        */
 
         Map<String, Object> jsonObject =new HashMap<String, Object>();
 
         jsonObject.put("resultMsg", resultMsg);
-        jsonObject.put("content", writingList);
+        jsonObject.put("content", writing);
 
         return jsonObject;
     }

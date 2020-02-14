@@ -156,5 +156,18 @@ public class WritingService {
         return writingRepository.findAll(pageable);
     }
 
+    public Writing getWriting(Writing writing) throws Exception{
+
+        Long writingNo = writing.getWritingNo();
+
+        return writingRepository.findByWritingNo(writingNo);
+    }
+
+    /*
+    public Page<WritingDtl> getWritingDtl(Pageable pageable, WritingDtl writingDtl) throws Exception{
+
+        return writingDtlRepository.findByWritingNo(pageable, writingDtl);
+    }
+     */
 
 }

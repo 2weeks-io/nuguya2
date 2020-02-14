@@ -24,20 +24,20 @@ public class PostController {
 
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
+    /*
+     ** 게시글 작성 페이지 이동
+     */
     @GetMapping("/page/writing")
     public String getWritePage(Model model) {
 
         return "writing";
     }
 
-    @GetMapping("/test/http")
-    public @ResponseBody String httpTest(){
-
-        return "test";
-    }
-
+    /*
+     ** 게시글 작성
+     */
     @PostMapping("/write")
-    public @ResponseBody String write(HttpServletRequest request, HttpSession session, Writing writing, CrawlingDto crawlingDto) throws Exception{
+    public String write(HttpServletRequest request, HttpSession session, Writing writing, CrawlingDto crawlingDto) throws Exception{
 
         writing.setRegpeId(session.toString());
         writing.setModpeId(session.toString());
@@ -47,7 +47,7 @@ public class PostController {
 
         writingService.insertWriting(writing, crawlingDto, multipartRequest);
 
-        return "hi";
+        return "index";
     }
 
 }

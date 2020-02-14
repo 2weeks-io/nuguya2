@@ -30,8 +30,8 @@ public class WritingDtlRepositoryTest {
         Writing newWriting = new Writing();
         writingRepository.save(newWriting);
 
-        Long writingNo = 1L;
-        Writing writing = writingRepository.findByWritingNo(writingNo);
+        newWriting.setWritingNo(1L);
+        Writing writing = writingRepository.findByWritingNo(newWriting.getWritingNo());
 
         WritingDtl writingDtl = new WritingDtl();
         writingDtl.setAnswer("hoon");
