@@ -2,6 +2,7 @@ package io.weeks.nuguya.Controller;
 
 import io.weeks.nuguya.Entity.Writing;
 import io.weeks.nuguya.Service.WritingService;
+import io.weeks.nuguya.dto.CrawlingDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class PostController {
     }
 
     @PostMapping("/write")
-    public @ResponseBody String write(HttpServletRequest request, HttpSession session, Writing writing) throws Exception{
+    public @ResponseBody String write(HttpServletRequest request, HttpSession session, Writing writing, CrawlingDto crawlingDto) throws Exception{
 
         writing.setRegpeId(session.toString());
         writing.setModpeId(session.toString());
@@ -44,7 +45,7 @@ public class PostController {
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
 
-        writingService.insertWriting(writing, multipartRequest);
+        writingService.insertWriting(writing, crawlingDto, multipartRequest);
 
         return "hi";
     }

@@ -26,4 +26,8 @@ public class WritingDtl extends BaseTimeEntity {
 
     private String answer;
 
+    private String regpeId;
+
+    private String modpeId;
+
 }
