@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -62,18 +62,7 @@ public class WritingService {
             String titleImgPath = "/assets/" + appName + saveFilePath + fileService.restore(multipartRequest.getFile("titleImg"), path);
             writing.setTitleImgPath(titleImgPath);
 
-            List<MultipartFile> banImgFileList = multipartRequest.getFiles("banImg");
             if ("10".equals(writing.getWritingDivCd())) {  //모자이크 게임 등록
-
-                for(int j=0;j<5;j++){
-
-                    if("".equals(banImgFileList.get(j).getOriginalFilename())){
-                        break;
-                    } else{
-                        String banImgPath   = "/assets/" + appName + saveFilePath + fileService.restore(banImgFileList.get(j), path);
-                        this.setBanImgPath(writing, banImgPath, j);
-                    }
-                }
 
                 Writing newWriting = writingRepository.save(writing);
 
@@ -132,25 +121,6 @@ public class WritingService {
         }
     }
 
-    /*
-     ** 인덱스에 따른 배너 이미지 경로 세팅
-     */
-    public void setBanImgPath(Writing writingDto, String banImgPath, int index) throws Exception{
-
-        if(index == 0) {
-            writingDto.setBanImgPath1(banImgPath);
-        } else if(index == 1) {
-            writingDto.setBanImgPath2(banImgPath);
-        } else if(index == 2) {
-            writingDto.setBanImgPath3(banImgPath);
-        } else if(index == 3) {
-            writingDto.setBanImgPath4(banImgPath);
-        } else if(index == 4){
-            writingDto.setBanImgPath5(banImgPath);
-        }
-
-    }
-
     public Page<Writing> getMainWriting(Pageable pageable) throws Exception{
 
         return writingRepository.findAll(pageable);
@@ -163,11 +133,65 @@ public class WritingService {
         return writingRepository.findByWritingNo(writingNo);
     }
 
-    /*
-    public Page<WritingDtl> getWritingDtl(Pageable pageable, WritingDtl writingDtl) throws Exception{
 
-        return writingDtlRepository.findByWritingNo(pageable, writingDtl);
+    public List<WritingDtl> getRandomWritingDtl(Long writingNo, Pageable pageable) throws Exception{
+
+        return writingDtlRepository.findByRandomWritingNo(writingNo, pageable).getContent();
     }
+
+    /*
+     ** 게시글 상세 랜덤 보기 세팅
      */
+    public List<WritingDtl> setRandomAnser(Writing writing, List<WritingDtl> writingDtlList, int randAnswerNum) throws Exception{
+
+        List<WritingDtl> totalWritingDtlList = writing.getWritingDtlList();
+        List<String> randAnswerArr = new ArrayList<String>();
+
+        int totalLen = totalWritingDtlList.size();
+
+        //랜덤 보기 리스트 구성
+        for(int i = 0; i<totalLen ; i++){
+            if(!randAnswerArr.contains(totalWritingDtlList.get(i).getAnswer())){
+                randAnswerArr.add(totalWritingDtlList.get(i).getAnswer());
+            }
+        }
+
+        int max = randAnswerArr.size()-1;
+
+        //게시글 마다 랜덤 보기 생성
+        for(WritingDtl w : writingDtlList){
+
+            //게시글 상세에 세팅해줄 랜덤 보기
+            String randAnswer = "";
+            int cnt = 0;
+
+            while(cnt<randAnswerNum-1) {
+
+                int randomNum = randomRange(0, max);
+
+                String curRandomAnswer = randAnswerArr.get(randomNum);
+                if(!w.getAnswer().equals(curRandomAnswer) && !randAnswer.contains(curRandomAnswer)){  //현재 정답과 랜덤 보기가 달라야 넣음
+                    randAnswer += curRandomAnswer +",";
+                    cnt++;
+                }
+
+                //마지막 ',' 삭제
+                if(cnt == randAnswerNum-1) {
+                    randAnswer += w.getAnswer();
+                    w.setRandAnswer(randAnswer);
+                }
+            }
+
+        }
+
+        return writingDtlList;
+    }
+
+    /*
+     ** min ~ max 까지 random 정수 출력
+     */
+    public int randomRange(int min, int max) {
+        return (int) (Math.random() * (max - min + 1)) + min;
+    }
 
 }

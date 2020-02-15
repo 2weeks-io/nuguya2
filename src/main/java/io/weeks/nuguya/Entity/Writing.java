@@ -27,21 +27,9 @@ public class Writing extends BaseTimeEntity {
 
     private String writingDivCd;
 
-    private String writingExplain;
-
     private String title;
 
     private String titleImgPath;
-
-    private String banImgPath1;
-
-    private String banImgPath2;
-
-    private String banImgPath3;
-
-    private String banImgPath4;
-
-    private String banImgPath5;
 
     private String useYn;
 
@@ -52,5 +40,8 @@ public class Writing extends BaseTimeEntity {
     private String regpeId;
 
     private String modpeId;
+
+    @Transient
+    private String solvedNum;
 
 }
