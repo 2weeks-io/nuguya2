@@ -17,7 +17,6 @@ import java.io.Serializable;
 public class WritingDtl extends BaseTimeEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "writing_seq")
     private Long writingSeq;
 

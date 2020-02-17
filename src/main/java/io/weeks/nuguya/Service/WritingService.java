@@ -92,6 +92,7 @@ public class WritingService {
                         writingDtl.setRegpeId(writing.getRegpeId());
                         writingDtl.setModpeId(writing.getModpeId());
                         writingDtl.setAnswer(keyword);
+                        writingDtl.setWritingNo(newWriting.getWritingNo());
 
                         //배열 안에 있는것도 JSON형식 이기 때문에 JSON Object 로 추출
                         Object fileInfoObj = (Object) imageList.get(i);
