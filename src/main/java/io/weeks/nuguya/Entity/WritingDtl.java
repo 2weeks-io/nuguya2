@@ -5,6 +5,7 @@ import io.weeks.dto.BaseTimeEntity;
 import io.weeks.nuguya.PrimaryKey.WritingDtlPk;
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,7 +18,8 @@ import java.io.Serializable;
 public class WritingDtl extends BaseTimeEntity{
 
     @Id
-    @Column(name = "writing_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "writing_seq", updatable=false,nullable=false)
     private Long writingSeq;
 
     @Id

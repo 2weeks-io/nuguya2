@@ -11,6 +11,11 @@ public class WritingDtlPk  implements Serializable {
 
     public WritingDtlPk(){}
 
+    public WritingDtlPk(Long writingNo, Long writingSeq){
+        this.writingNo = writingNo;
+        this.writingSeq = writingSeq;
+    }
+
     private Long writingNo;
 
     private Long writingSeq;

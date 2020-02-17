@@ -85,6 +85,7 @@ public class WritingService {
                     }
 
                     int imageLen = imageList.size();
+                    Long writingSeq = 0L;
 
                     for (int i = 0; i < imageLen; i++) {
 
@@ -101,13 +102,11 @@ public class WritingService {
                         System.out.println(fileInfoObj.toString());
 
                         //이미지 경로 저장
-
                         String resourcePath = "/assets/nuguya" + fileInfoObj.toString();
 
                         writingDtl.setOriImgPath1(resourcePath);
                         writingDtl.setWriting(writing);
-                        writingDtlRepository.save(writingDtl);
-
+                        WritingDtl newWritingDtl = writingDtlRepository.save(writingDtl);
                     }
                 }
 
