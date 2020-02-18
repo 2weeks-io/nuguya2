@@ -17,6 +17,10 @@ public class WritingType extends BaseTimeEntity {
 
     private String writingExplain;
 
+    private String title;
+
+    private String titleImgPath;
+
     private String banImgPath1;
 
     private String banImgPath2;
