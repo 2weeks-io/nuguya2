@@ -44,4 +44,7 @@ public class Writing extends BaseTimeEntity {
     @Transient
     private String solvedNum;
 
+    @Transient
+    private List<String> answer;
+
 }

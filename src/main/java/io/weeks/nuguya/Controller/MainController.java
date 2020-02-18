@@ -59,15 +59,15 @@ public class MainController {
     /*
      ** 게임 유형 리스트 조회
      */
-    @GetMapping(value ="/writings/{pageNum}/{pageSize}", produces = "application/json; charset=UTF-8")
-    public Map<String,Object> getWritings(Pageable pageable, @PathVariable Integer pageNum, @PathVariable Integer pageSize) throws Exception{
+    @GetMapping(value ="/writings/{writingDivCd}/{pageNum}/{pageSize}", produces = "application/json; charset=UTF-8")
+    public Map<String,Object> getWritings(Pageable pageable, @PathVariable Integer pageNum, @PathVariable Integer pageSize, @PathVariable String writingDivCd) throws Exception{
 
         String resultMsg = "success";
 
         //일단 등록 순으로 정렬 -> 랜덤으로 바꿔야할꺼 같은데
         pageable = PageRequest.of(pageNum, pageSize, Sort.by("regDts").descending());
 
-        Page<Writing>  writingList = writingService.getMainWriting(pageable);
+        Page<Writing>  writingList = writingService.getMainWriting(pageable, writingDivCd);
 
         Map<String, Object> jsonObject =new HashMap<String, Object>();
 

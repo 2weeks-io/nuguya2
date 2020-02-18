@@ -9,6 +9,6 @@ public class CrawlingDto {
 
     private String requestUrl;
 
-    private int crawlingNum;
+    private Long crawlingNum;
 
 }

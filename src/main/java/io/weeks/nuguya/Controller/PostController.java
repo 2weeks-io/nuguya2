@@ -1,6 +1,7 @@
 package io.weeks.nuguya.Controller;
 
 import io.weeks.nuguya.Entity.Writing;
+import io.weeks.nuguya.Entity.WritingDtl;
 import io.weeks.nuguya.Service.WritingService;
 import io.weeks.nuguya.dto.CrawlingDto;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class PostController {

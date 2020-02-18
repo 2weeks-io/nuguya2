@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.ArrayList;
@@ -46,17 +47,10 @@ public class WritingService {
     public void insertWriting(Writing writing, CrawlingDto crawlingDto, MultipartHttpServletRequest multipartRequest) throws Exception{
 
         try {
-            String appName = fileConfigDto.getApplicationName();
+            String appName        = fileConfigDto.getApplicationName();
             String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
-            String saveFilePath = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
-            String path = fileUploadPath + saveFilePath;
-
-            String keywords = crawlingDto.getSrhchKeywords();
-            String crawlingNum = Integer.toString(crawlingDto.getCrawlingNum());
-
-            String requestUrl = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
-
-            crawlingDto.setRequestUrl(requestUrl);
+            String saveFilePath   = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
+            String path           = fileUploadPath + saveFilePath;
 
             //제목 이미지 업로드 및 경로 세팅
             String titleImgPath = "/assets/" + appName + saveFilePath + fileService.restore(multipartRequest.getFile("titleImg"), path);
@@ -64,6 +58,13 @@ public class WritingService {
 
             if ("10".equals(writing.getWritingDivCd())) {  //모자이크 게임 등록
 
+                //크롤링 정보 입력
+                String keywords    = crawlingDto.getSrhchKeywords();
+                String crawlingNum = Long.toString(crawlingDto.getCrawlingNum());
+                String requestUrl  = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
+                crawlingDto.setRequestUrl(requestUrl);
+
+                //게시글 등록
                 Writing newWriting = writingRepository.save(writing);
 
                 //JSONObject 파싱 후 상세 데이터 저장
@@ -106,11 +107,49 @@ public class WritingService {
 
                         writingDtl.setOriImgPath1(resourcePath);
                         writingDtl.setWriting(writing);
-                        WritingDtl newWritingDtl = writingDtlRepository.save(writingDtl);
+                        writingDtlRepository.save(writingDtl);
                     }
                 }
 
             } else if ("20".equals(writing.getWritingDivCd())) { //눈코입 게임 등록
+
+                //게시글 등록
+                Writing newWriting = writingRepository.save(writing);
+
+                List<MultipartFile> oriImgFile   = multipartRequest.getFiles("oriImgFile");
+                List<MultipartFile> compoImgFile = multipartRequest.getFiles("compoImgFile");
+
+                int oriImgFileSize   = oriImgFile.size();
+                int compoImgFileSize = compoImgFile.size();
+
+                int oriLen   = 0;
+                int compoLen = 0;
+
+                //원본 합성이미지 모두 입력되있다고 가정
+                for(int j=0;j<oriImgFileSize;j++) {
+                    if(!oriImgFile.get(j).isEmpty()) {
+                        oriLen++;
+                    } else {
+                        break;
+                    }
+                }
+
+                for(int i=1;i<=oriLen;i++) {
+                    String oriImgPath1   = "/assets/" + appName + saveFilePath + fileService.restore(oriImgFile.get(i-1), path);
+                    String compoImgPath1 = "/assets/" + appName + saveFilePath + fileService.restore(compoImgFile.get(i-1), path);
+                    String answer        = writing.getAnswer().get(i-1);
+                    WritingDtl writingDtl = new WritingDtl();
+                    writingDtl.setRegpeId(writing.getRegpeId());
+                    writingDtl.setModpeId(writing.getModpeId());
+                    writingDtl.setAnswer(answer);
+                    writingDtl.setWritingNo(newWriting.getWritingNo());
+
+                    //이미지 경로 저장
+                    writingDtl.setOriImgPath1(oriImgPath1);
+                    writingDtl.setCompoImgPath1(compoImgPath1);
+                    writingDtl.setWriting(writing);
+                    writingDtlRepository.save(writingDtl);
+                }
 
             }
 
@@ -121,9 +160,9 @@ public class WritingService {
         }
     }
 
-    public Page<Writing> getMainWriting(Pageable pageable) throws Exception{
+    public Page<Writing> getMainWriting(Pageable pageable, String writingDivCd) throws Exception{
 
-        return writingRepository.findAll(pageable);
+        return writingRepository.findByWritingDivCd(pageable, writingDivCd);
     }
 
     public Writing getWriting(Writing writing) throws Exception{
