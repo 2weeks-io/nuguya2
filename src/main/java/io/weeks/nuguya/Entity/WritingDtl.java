@@ -17,6 +17,11 @@ import java.io.Serializable;
 @IdClass(WritingDtlPk.class)
 public class WritingDtl extends BaseTimeEntity{
 
+    @ManyToOne
+    @JoinColumn(name = "writing_no", insertable = false, updatable = false)
+    @JsonBackReference
+    private Writing writing;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "writing_seq", updatable=false,nullable=false)
@@ -25,11 +30,6 @@ public class WritingDtl extends BaseTimeEntity{
     @Id
     @Column(name = "writing_no")
     private Long writingNo;
-
-    @ManyToOne
-    @JoinColumn(name = "writing_no", insertable = false, updatable = false)
-    @JsonBackReference
-    private Writing writing;
 
     private String oriImgPath1;
 

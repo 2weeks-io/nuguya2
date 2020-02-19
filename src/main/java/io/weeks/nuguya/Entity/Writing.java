@@ -21,10 +21,6 @@ public class Writing extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long writingNo;
 
-    @OneToMany(mappedBy="writing")
-    @JsonManagedReference
-    private List<WritingDtl> writingDtlList = new ArrayList<WritingDtl>();
-
     private String writingDivCd;
 
     private String title;
@@ -49,5 +45,9 @@ public class Writing extends BaseTimeEntity {
 
     @Transient
     private double AverageNum;
+
+    @OneToMany(mappedBy="writing")
+    @JsonManagedReference
+    private List<WritingDtl> writingDtlList = new ArrayList<WritingDtl>();
 
 }
