@@ -47,4 +47,7 @@ public class Writing extends BaseTimeEntity {
     @Transient
     private List<String> answer;
 
+    @Transient
+    private double AverageNum;
+
 }

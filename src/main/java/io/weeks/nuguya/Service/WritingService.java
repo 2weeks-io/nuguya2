@@ -233,4 +233,11 @@ public class WritingService {
         return (int) (Math.random() * (max - min + 1)) + min;
     }
 
+    public Writing updateWritingScore(Writing writing){
+
+        writingRepository.save(writing);
+
+        return writing;
+    }
+
 }

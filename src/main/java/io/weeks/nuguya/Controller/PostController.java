@@ -29,7 +29,7 @@ public class PostController {
     /*
      ** 게시글 작성 페이지 이동
      */
-    @GetMapping("/page/writing")
+    @GetMapping(value = "/page/writing")
     public String getWritePage(Model model) {
 
         return "writing";
@@ -38,7 +38,7 @@ public class PostController {
     /*
      ** 게시글 작성
      */
-    @PostMapping("/write")
+    @PostMapping(value = "/write")
     public String write(HttpServletRequest request, HttpSession session, Writing writing, CrawlingDto crawlingDto) throws Exception{
 
         writing.setRegpeId(session.toString());
