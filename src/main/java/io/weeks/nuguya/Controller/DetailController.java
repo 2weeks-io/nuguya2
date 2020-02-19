@@ -51,9 +51,8 @@ public class DetailController {
             resultMsg = "fail";
         }
 
-
-        jsonObject.put("resultMsg", resultMsg);
         jsonObject.put("content", writing);
+        jsonObject.put("resultMsg", resultMsg);
 
         return jsonObject;
     }
@@ -87,8 +86,8 @@ public class DetailController {
             resultMsg = "fail";
         }
 
-        jsonObject.put("resultMsg", resultMsg);
         jsonObject.put("content", writing);
+        jsonObject.put("resultMsg", resultMsg);
 
         return jsonObject;
     }

@@ -50,8 +50,8 @@ public class MainController {
 
         Map<String, Object> jsonObject =new HashMap<String, Object>();
 
-        jsonObject.put("resultMsg", resultMsg);
         jsonObject.put("content", writingTypeList);
+        jsonObject.put("resultMsg", resultMsg);
 
         return jsonObject;
     }
@@ -71,8 +71,8 @@ public class MainController {
 
         Map<String, Object> jsonObject =new HashMap<String, Object>();
 
-        jsonObject.put("resultMsg", resultMsg);
         jsonObject.put("content", writingList);
+        jsonObject.put("resultMsg", resultMsg);
 
         return jsonObject;
     }
