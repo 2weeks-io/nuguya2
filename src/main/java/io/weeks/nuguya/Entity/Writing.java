@@ -29,6 +29,9 @@ public class Writing extends BaseTimeEntity {
 
     private String useYn;
 
+    @Transient
+    private double averageNum;
+
     private int score;
 
     private int particiNum;
@@ -42,9 +45,6 @@ public class Writing extends BaseTimeEntity {
 
     @Transient
     private List<String> answer;
-
-    @Transient
-    private double AverageNum;
 
     @OneToMany(mappedBy="writing")
     @JsonManagedReference
