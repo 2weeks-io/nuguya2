@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,12 @@ public class MainController {
 
     @Autowired
     private WritingTypeService writingTypeService;
+
+    @GetMapping("test")
+    public String getWritePage(Model model) {
+
+        return "test";
+    }
 
     /*
      ** 게임 유형 리스트 조회
@@ -43,8 +50,8 @@ public class MainController {
 
         Map<String, Object> jsonObject =new HashMap<String, Object>();
 
-        jsonObject.put("resultMsg", resultMsg);
         jsonObject.put("content", writingTypeList);
+        jsonObject.put("resultMsg", resultMsg);
 
         return jsonObject;
     }
@@ -52,20 +59,20 @@ public class MainController {
     /*
      ** 게임 유형 리스트 조회
      */
-    @GetMapping(value ="/writings/{pageNum}/{pageSize}", produces = "application/json; charset=UTF-8")
-    public Map<String,Object> getWritings(Pageable pageable, @PathVariable Integer pageNum, @PathVariable Integer pageSize) throws Exception{
+    @GetMapping(value ="/writings/{writingDivCd}/{pageNum}/{pageSize}", produces = "application/json; charset=UTF-8")
+    public Map<String,Object> getWritings(Pageable pageable, @PathVariable Integer pageNum, @PathVariable Integer pageSize, @PathVariable String writingDivCd) throws Exception{
 
         String resultMsg = "success";
 
         //일단 등록 순으로 정렬 -> 랜덤으로 바꿔야할꺼 같은데
         pageable = PageRequest.of(pageNum, pageSize, Sort.by("regDts").descending());
 
-        Page<Writing>  writingList = writingService.getMainWriting(pageable);
+        Page<Writing>  writingList = writingService.getMainWriting(pageable, writingDivCd);
 
         Map<String, Object> jsonObject =new HashMap<String, Object>();
 
-        jsonObject.put("resultMsg", resultMsg);
         jsonObject.put("content", writingList);
+        jsonObject.put("resultMsg", resultMsg);
 
         return jsonObject;
     }

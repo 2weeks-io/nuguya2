@@ -1,6 +1,7 @@
 package io.weeks.nuguya.Repository;
 
 import io.weeks.nuguya.Entity.Writing;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,5 +14,7 @@ public interface WritingRepository extends JpaRepository<Writing, Long> {
     List<Writing> findAllBy(Pageable pageable);
 
     List<Writing> findByWritingDivCd(String writingDivCd);
+
+    Page<Writing> findByWritingDivCd(Pageable pageable, String writingDivCd);
 
 }

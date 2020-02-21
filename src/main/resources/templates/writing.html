@@ -2,7 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUGUYA</title>
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
 </head>
 
 <script type="text/javascript" src="../js/writing.js"></script>
@@ -16,7 +18,7 @@
 
 <body>
 
-<form action="/nuguya/write" method="post" enctype="multipart/form-data">
+<form action="/nuguya/write" id="dataForm" method="post" enctype="multipart/form-data">
 
     <div style="margin-left:100px;">
         <h2>게임 유형 선택</h2>
@@ -25,10 +27,10 @@
     </div>
 
     <div id="writingRegDivCd10" style="margin-left:100px;">
-        <p> 제목: <input type="text" id="title" name="title" style="width:200px"></p>
+        <p> 제목: <input type="text" name="title" style="width:200px"></p>
 
         <p>
-            대표이미지: <input type="file" id="titleImg" name="titleImg" style="width:200px">
+            대표이미지: <input type="file" name="titleImg" style="width:200px">
         </p>
 
         <p>
@@ -37,17 +39,31 @@
             <input type="text" id="srhchKeywords" name="srhchKeywords" style="width:708px">
         </p>
 
-        <button type="submit">게시글 업로드</button>
     </div>
 
     <div id="writingRegDivCd20" style="display:none;margin-left:100px;">
-        구현예정
+
+        <p> 제목: <input type="text" name="title" style="width:200px"></p>
+
+        <p>
+            대표이미지: <input type="file" name="titleImg" style="width:200px">
+        </p>
+
+        <input name="addBtn" type="button" value="이미지 추가" onclick="addImgFile()">
+
+        <p>
+            원본이미지: <input type="file" name="oriImgFile"   style="width:200px">
+            합성이미지: <input type="file" name="compoImgFile" style="width:200px">
+            정답: <input type="text" name="answer" style="width:200px">
+        </p>
+
+    </div>
+
+    <div style="margin-left:100px;">
+        <button type="submit">게시글 업로드</button>
     </div>
 
 </form>
-
-
-
 
 </body>
 </html>
