@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -207,22 +208,38 @@ public class WritingService {
             String randAnswer = "";
             int cnt = 0;
 
+            List<String> randList = new ArrayList<String>();
+
             while(cnt<randAnswerNum-1) {
 
                 int randomNum = randomRange(0, max);
 
                 String curRandomAnswer = randAnswerArr.get(randomNum);
-                if(!w.getAnswer().equals(curRandomAnswer) && !randAnswer.contains(curRandomAnswer)){  //현재 정답과 랜덤 보기가 달라야 넣음
-                    randAnswer += curRandomAnswer +",";
+                if(!w.getAnswer().equals(curRandomAnswer) && !randList.contains(curRandomAnswer)){  //현재 정답과 랜덤 보기가 달라야 넣음
+                    randList.add(curRandomAnswer);
                     cnt++;
                 }
 
-                //마지막 ',' 삭제
+                //마지막에 정답을 넣어줌
                 if(cnt == randAnswerNum-1) {
-                    randAnswer += w.getAnswer();
+                    randList.add(w.getAnswer());
                     w.setRandAnswer(randAnswer);
                 }
             }
+
+            //리스트 셔플
+            Collections.shuffle(randList);
+
+            randAnswer ="";
+
+            for(String answer : randList){
+                randAnswer += answer + ",";
+            }
+
+            //마지막 , 제거
+            randAnswer = randAnswer.substring(0,randAnswer.length()-1);
+
+            w.setRandAnswer(randAnswer);
 
         }
 
