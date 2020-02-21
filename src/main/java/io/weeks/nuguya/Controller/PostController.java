@@ -44,6 +44,9 @@ public class PostController {
         writing.setRegpeId(session.toString());
         writing.setModpeId(session.toString());
         writing.setUseYn("Y");
+        String title = writing.getTitle();
+        title = title.replace(",", "");
+        writing.setTitle(title);
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
         try {
