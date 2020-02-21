@@ -25,6 +25,7 @@ public class WritingDtlRepositoryTest {
     @Autowired
     WritingRepository writingRepository;
 
+    /*
     @Test
     public void writingTest() throws SQLException {
 
@@ -51,6 +52,7 @@ public class WritingDtlRepositoryTest {
         assertThat(newWritingDtl.getWriting().getWritingNo()).isEqualTo(newWritingDtl.getWriting().getWritingNo());
 
     }
+     */
 
 
 }
