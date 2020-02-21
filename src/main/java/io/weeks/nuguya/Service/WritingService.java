@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class WritingService {
 
     @Autowired
@@ -51,6 +53,7 @@ public class WritingService {
             String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
             String saveFilePath   = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
             String path           = fileUploadPath + saveFilePath;
+            String srchPrefix    = writing.getSrchPrefix();
 
             //제목 이미지 업로드 및 경로 세팅
             String titleImgPath = "/assets/" + appName + saveFilePath + fileService.restore(multipartRequest.getFile("titleImg"), path);
@@ -61,7 +64,7 @@ public class WritingService {
                 //크롤링 정보 입력
                 String keywords    = crawlingDto.getSrhchKeywords();
                 String crawlingNum = Long.toString(crawlingDto.getCrawlingNum());
-                String requestUrl  = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
+                String requestUrl  = crawlingUrl + "/" + appName + "/" + srchPrefix + "/" + keywords + "/" + crawlingNum;
                 crawlingDto.setRequestUrl(requestUrl);
 
                 //게시글 등록

@@ -46,8 +46,12 @@ public class PostController {
         writing.setUseYn("Y");
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
-
-        writingService.insertWriting(writing, crawlingDto, multipartRequest);
+        try {
+            writingService.insertWriting(writing, crawlingDto, multipartRequest);
+        } catch(RuntimeException e){
+            e.printStackTrace();
+            return "index";
+        }
 
         return "index";
     }

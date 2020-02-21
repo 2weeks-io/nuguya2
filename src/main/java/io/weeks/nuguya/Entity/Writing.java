@@ -41,6 +41,9 @@ public class Writing extends BaseTimeEntity {
     private String modpeId;
 
     @Transient
+    private String srchPrefix;
+
+    @Transient
     private String solvedNum;
 
     @Transient
