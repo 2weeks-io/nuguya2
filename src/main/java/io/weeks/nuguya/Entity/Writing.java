@@ -46,6 +46,9 @@ public class Writing extends BaseTimeEntity {
     @Transient
     private List<String> answer;
 
+    @Transient
+    private List<String> members;
+
     @OneToMany(mappedBy="writing")
     @JsonManagedReference
     private List<WritingDtl> writingDtlList = new ArrayList<WritingDtl>();

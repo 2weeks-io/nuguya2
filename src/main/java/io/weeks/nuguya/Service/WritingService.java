@@ -240,4 +240,25 @@ public class WritingService {
         return writing;
     }
 
+    /*
+     ** 공유하기 해쉬태그 멤버 리스트 구성
+     */
+    public List<String> getMembers(int num, List<WritingDtl> writingDtlList){
+
+        List<String> members = new ArrayList<String>();
+        int cnt = 0;
+
+        for(WritingDtl writingDtl : writingDtlList){
+            String memberName = writingDtl.getAnswer();
+            if(cnt < num) {
+                break;
+            } else if(!members.contains(memberName)){
+                    members.add(memberName);
+                    cnt++;
+                }
+            }
+
+        return members;
+    }
+
 }

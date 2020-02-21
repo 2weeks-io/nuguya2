@@ -44,7 +44,9 @@ public class DetailController {
 
             int randAnswerNum = 3; //보기개수
             writingDtlList = writingService.setRandomAnser(writing, writingDtlList, randAnswerNum);
+            List<String> members = writingService.getMembers(5, writingDtlList);
 
+            writing.setMembers(members);
             writing.setWritingDtlList(writingDtlList);
         } catch(Exception e){
             e.printStackTrace();
