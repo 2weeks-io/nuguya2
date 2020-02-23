@@ -24,6 +24,14 @@ public class WritingTypeService {
     }
 
     /*
+     ** 게임 유형 데이터 조회
+     */
+    public WritingType getWritingType(String writingDivCd){
+
+        return writingTypeRepository.findByWritingDivCd(writingDivCd);
+    }
+
+    /*
      ** 메인페이지 - 게임 유형별 총 참여자 수
      */
     public int getSumParticiNum(WritingType writingType) throws Exception{
