@@ -29,6 +29,7 @@ public class WritingRepositoryTest {
     @Autowired
     WritingRepository writingRepository;
 
+    /*
     @Test
     public void di() throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
@@ -38,7 +39,9 @@ public class WritingRepositoryTest {
             System.out.println(metaData.getUserName());
         }
     }
+     */
 
+    /*
     @Test
     public void writingTest() throws SQLException {
 
@@ -50,7 +53,7 @@ public class WritingRepositoryTest {
         System.out.println(newWriting.toString());
         assertThat(newWriting).isNotNull();
 
-        /*
+
         Writing existingWriting = writingRepository.findByTitle(newWriting.getTitle());
         assertThat(existingWriting).isNotNull();
 
@@ -60,7 +63,8 @@ public class WritingRepositoryTest {
 
         Writing nonExistingWriting = writingRepository.findByTitle("superman");
         assertThat(nonExistingWriting).isNull();
-        */
+
     }
+    */
 
 }

@@ -14,13 +14,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
+@Transactional
 public class WritingService {
 
     @Autowired
@@ -51,6 +54,7 @@ public class WritingService {
             String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
             String saveFilePath   = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
             String path           = fileUploadPath + saveFilePath;
+            String srchPrefix    = writing.getSrchPrefix();
 
             //제목 이미지 업로드 및 경로 세팅
             String titleImgPath = "/assets/" + appName + saveFilePath + fileService.restore(multipartRequest.getFile("titleImg"), path);
@@ -61,7 +65,7 @@ public class WritingService {
                 //크롤링 정보 입력
                 String keywords    = crawlingDto.getSrhchKeywords();
                 String crawlingNum = Long.toString(crawlingDto.getCrawlingNum());
-                String requestUrl  = crawlingUrl + "/" + appName + "/" + keywords + "/" + crawlingNum;
+                String requestUrl  = crawlingUrl + "/" + appName + "/" + srchPrefix + "/" + keywords + "/" + crawlingNum;
                 crawlingDto.setRequestUrl(requestUrl);
 
                 //게시글 등록
@@ -204,22 +208,38 @@ public class WritingService {
             String randAnswer = "";
             int cnt = 0;
 
+            List<String> randList = new ArrayList<String>();
+
             while(cnt<randAnswerNum-1) {
 
                 int randomNum = randomRange(0, max);
 
                 String curRandomAnswer = randAnswerArr.get(randomNum);
-                if(!w.getAnswer().equals(curRandomAnswer) && !randAnswer.contains(curRandomAnswer)){  //현재 정답과 랜덤 보기가 달라야 넣음
-                    randAnswer += curRandomAnswer +",";
+                if(!w.getAnswer().equals(curRandomAnswer) && !randList.contains(curRandomAnswer)){  //현재 정답과 랜덤 보기가 달라야 넣음
+                    randList.add(curRandomAnswer);
                     cnt++;
                 }
 
-                //마지막 ',' 삭제
+                //마지막에 정답을 넣어줌
                 if(cnt == randAnswerNum-1) {
-                    randAnswer += w.getAnswer();
+                    randList.add(w.getAnswer());
                     w.setRandAnswer(randAnswer);
                 }
             }
+
+            //리스트 셔플
+            Collections.shuffle(randList);
+
+            randAnswer ="";
+
+            for(String answer : randList){
+                randAnswer += answer + ",";
+            }
+
+            //마지막 , 제거
+            randAnswer = randAnswer.substring(0,randAnswer.length()-1);
+
+            w.setRandAnswer(randAnswer);
 
         }
 
@@ -238,6 +258,27 @@ public class WritingService {
         writingRepository.save(writing);
 
         return writing;
+    }
+
+    /*
+     ** 공유하기 해쉬태그 멤버 리스트 구성
+     */
+    public List<String> getMembers(int num, List<WritingDtl> writingDtlList){
+
+        List<String> members = new ArrayList<String>();
+        int cnt = 0;
+
+        for(WritingDtl writingDtl : writingDtlList){
+            String memberName = writingDtl.getAnswer();
+            if(cnt < num) {
+                break;
+            } else if(!members.contains(memberName)){
+                    members.add(memberName);
+                    cnt++;
+                }
+            }
+
+        return members;
     }
 
 }

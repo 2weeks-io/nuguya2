@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://13.124.147.111:3306/nuguya</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="ssgAvengers" uuid="84f67420-1051-4da7-b9e6-ff1d63b30ab1">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://15.164.84.243:3306/ssgAvengers</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -57,6 +57,29 @@ public class MainController {
     }
 
     /*
+     ** 게임 유형 조회
+     */
+    @GetMapping(value ="/writingType/{writingDivCd}", produces = "application/json; charset=UTF-8")
+    public Map<String,Object> getWritingType(@PathVariable String writingDivCd) throws Exception{
+
+        String resultMsg = "success";
+
+        WritingType writingType = new WritingType();
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+
+        try {
+            writingType = writingTypeService.getWritingType(writingDivCd);
+            jsonObject.put("content", writingType);
+            jsonObject.put("resultMsg", resultMsg);
+        } catch(RuntimeException e){
+            resultMsg = "fail";
+            jsonObject.put("resultMsg", resultMsg);
+        }
+
+        return jsonObject;
+    }
+
+    /*
      ** 게임 유형 리스트 조회
      */
     @GetMapping(value ="/writings/{writingDivCd}/{pageNum}/{pageSize}", produces = "application/json; charset=UTF-8")

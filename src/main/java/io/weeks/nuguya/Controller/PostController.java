@@ -44,10 +44,17 @@ public class PostController {
         writing.setRegpeId(session.toString());
         writing.setModpeId(session.toString());
         writing.setUseYn("Y");
+        String title = writing.getTitle();
+        title = title.replace(",", "");
+        writing.setTitle(title);
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
-
-        writingService.insertWriting(writing, crawlingDto, multipartRequest);
+        try {
+            writingService.insertWriting(writing, crawlingDto, multipartRequest);
+        } catch(RuntimeException e){
+            e.printStackTrace();
+            return "index";
+        }
 
         return "index";
     }
