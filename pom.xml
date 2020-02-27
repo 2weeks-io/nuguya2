@@ -18,6 +18,15 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <environment>test</environment>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
 
         <dependency>
