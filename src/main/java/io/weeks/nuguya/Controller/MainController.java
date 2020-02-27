@@ -30,7 +30,7 @@ public class MainController {
     @GetMapping("test")
     public String getWritePage(Model model) {
 
-        return "docker test!!!!!!!!!!";
+        return "소스변경 반영 테스트";
     }
 
     /*
