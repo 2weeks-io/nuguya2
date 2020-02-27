@@ -17,4 +17,5 @@ public interface WritingRepository extends JpaRepository<Writing, Long> {
 
     Page<Writing> findByWritingDivCd(Pageable pageable, String writingDivCd);
 
+    Page<Writing> findByWritingDivCdAndUseYn(Pageable pageable, String writingDivCd, String useYn);
 }

@@ -166,7 +166,9 @@ public class WritingService {
 
     public Page<Writing> getMainWriting(Pageable pageable, String writingDivCd) throws Exception{
 
-        return writingRepository.findByWritingDivCd(pageable, writingDivCd);
+        String useYn = "Y";
+
+        return writingRepository.findByWritingDivCdAndUseYn(pageable, writingDivCd, useYn);
     }
 
     public Writing getWriting(Writing writing) throws Exception{
