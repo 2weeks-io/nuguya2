@@ -5,6 +5,7 @@ import io.weeks.nuguya.Entity.Writing;
 import io.weeks.nuguya.Entity.WritingDtl;
 import io.weeks.nuguya.Service.WritingMngService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,9 @@ public class WritingMngController {
     @Autowired
     FileService fileService;
 
+    @Value("${weeks.reqServerUrl}")
+    private String reqServerUrl;
+
     /*
      ** 게시글 상세 업데이트 페이지 반환
      */
@@ -34,6 +38,7 @@ public class WritingMngController {
 
         model.addAttribute("writing", writing);
         model.addAttribute("writingDtlList", writingDtlList);
+        model.addAttribute("reqServerUrl", reqServerUrl);
 
         return "writingUpdate";
     }

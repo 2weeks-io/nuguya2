@@ -32,7 +32,7 @@
     <tr th:each="writingDtl : ${writingDtlList}" style="cursor:pointer;" th:id="${writingDtl.answer}">
         <td th:text="${writingDtl.answer}" ></td>
         <td th:text="${writingDtl.oriImgPath1}" ></td>
-        <td> <img th:src="@{http://13.124.147.111:2000/nuguya}+${writingDtl.oriImgPath1}" alt="이미지 준비중 입니다." width="200" height="200"/> </td>
+        <td> <img th:src="${reqServerUrl}+${writingDtl.oriImgPath1}" alt="이미지 준비중 입니다." width="200" height="200"/> </td>
         <td><input name="delBtn" type="button" value="삭제" th:attr="data-writingSeq=${writingDtl.writingSeq},data-writingNo=${writingDtl.writingNo}"></td>
     </tr>
 </table>
