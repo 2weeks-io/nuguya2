@@ -7,10 +7,7 @@ import io.weeks.nuguya.Service.WritingMngService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +42,7 @@ public class WritingMngController {
      ** 게시글 상세 삭제
      */
     @DeleteMapping(value = "/writingDtl/{writingNo}/{writingSeq}")
-    public Map<String,Object> deleteWritingDtl(WritingDtl writingDtl) throws Exception{
+    public @ResponseBody Map<String,Object> deleteWritingDtl(WritingDtl writingDtl) throws Exception{
         String resultMsg = "";
         Map<String, Object> jsonObject =new HashMap<String, Object>();
 
