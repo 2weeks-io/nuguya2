@@ -8,8 +8,10 @@ import io.weeks.nuguya.Repository.WritingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class WritingMngService {
 
     @Autowired
@@ -36,6 +38,8 @@ public class WritingMngService {
 
         String resultMsg = "success";
 
+        writingDtl = writingDtlRepository.findByWritingNoAndWritingSeq(writingDtl.getWritingNo(), writingDtl.getWritingSeq());
+
         try{
 
             String oriImgPath1 = writingDtl.getOriImgPath1();
@@ -49,10 +53,14 @@ public class WritingMngService {
             writingDtlRepository.deleteByWritingNoAndWritingSeq(writingDtl.getWritingNo(), writingDtl.getWritingSeq());
 
             //게시글 이미지 삭제
-            fileService.deleteFile(oriImgPath1);
+            if(!"success".equals(fileService.deleteFile(oriImgPath1))){
+                throw new Exception();
+            }
 
-        } catch(RuntimeException e){
+        } catch(Exception e){
+            e.printStackTrace();
             resultMsg = "fail";
+            throw new RuntimeException(e);
         }
 
         return resultMsg;
