@@ -8,9 +8,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface WritingDtlRepository extends JpaRepository<WritingDtl, Long> {
 
     @Query("select w from WritingDtl w where w.writingNo = :writingNo order by function('RAND')")
     Page<WritingDtl> findByRandomWritingNo(@Param("writingNo") Long writingNo, Pageable pageable);
 
+    List<WritingDtl> findByWritingNo(Integer writingNo);
+
+    void deleteByWritingNoAndWritingSeq(Long writingNo, Long WritingSeq);
 }

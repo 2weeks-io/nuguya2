@@ -30,7 +30,7 @@ public class MainController {
     @GetMapping("test")
     public String getWritePage(Model model) {
 
-        return "소스변경 반영 테스트";
+        return "소스변경 반영 테스트!!!!";
     }
 
     /*

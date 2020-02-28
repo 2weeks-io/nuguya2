@@ -5,14 +5,12 @@ import io.weeks.dto.BaseTimeEntity;
 import io.weeks.nuguya.PrimaryKey.WritingDtlPk;
 import lombok.Data;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Data
-@ToString
+@ToString(exclude = "writing")
 @Table(name = "writing_dtl")
 @IdClass(WritingDtlPk.class)
 public class WritingDtl extends BaseTimeEntity{

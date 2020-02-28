@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@ToString
 @Table(name = "writing_type")
 public class WritingType extends BaseTimeEntity {
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUGUYA</title>
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<script type="text/javascript" src="../js/writing.js"></script>
+<script type="text/javascript" src="../js/writingUpdate.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    window.onload = function () {
+        bindObjectEvt();
+    }
+</script>
+<body>
+
+<input type="hidden" th:value="${writing.writingNo}" />
+
+<div style="margin-left: auto; margin-right: auto; width: 65%;">
+    <h1 게시글번호 th:text="@{게시글번호 : } + ${writing.writingNo}"></h1>
+    <h1 게시물이름 th:text="@{게시물이름 : } + ${writing.title}"></h1>
+</div>
+
+<table style="margin-left: auto; margin-right: auto; width: 65%;">
+    <tr>
+        <th>정답</th>
+        <th>원본 이미지</th>
+        <th>합성 이미지</th>
+    </tr>
+    <tr th:each="writingDtl : ${writingDtlList}" style="cursor:pointer;" th:id="${writingDtl.answer}" onclick="check(this.id)">
+        <td th:text="${writingDtl.answer}" ></td>
+        <td th:text="${writingDtl.oriImgPath1}" ></td>
+        <td> <img th:src="@{http://13.124.147.111:2000/nuguya}+${writingDtl.oriImgPath1}" alt="이미지 준비중 입니다." width="200" height="200"/> </td>
+        <td><input name="delBtn" type="button" value="삭제" th:attr="data-writingSeq=${writingDtl.writingSeq},data-writingNo=${writingDtl.writingNo}" onclick="delWritingDtl()"></td>
+    </tr>
+</table>
+
+</body>
+</html>

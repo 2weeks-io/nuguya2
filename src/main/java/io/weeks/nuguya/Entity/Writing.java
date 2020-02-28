@@ -1,6 +1,5 @@
 package io.weeks.nuguya.Entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.weeks.dto.BaseTimeEntity;
 import lombok.Data;
@@ -8,12 +7,13 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+
 
 @Entity
 @Data
-@ToString
+@ToString(exclude = "writingDtlList")
 @Table(name = "writing")
 public class Writing extends BaseTimeEntity {
 
@@ -55,5 +55,6 @@ public class Writing extends BaseTimeEntity {
     @OneToMany(mappedBy="writing")
     @JsonManagedReference
     private List<WritingDtl> writingDtlList = new ArrayList<WritingDtl>();
+
 
 }
