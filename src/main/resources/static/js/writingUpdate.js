@@ -19,9 +19,9 @@ function bindObjectEvt() {
             type        : "DELETE",
             data        : param,
             cache       : false,
-            success     : function(result){
+            success     : function(result, writingDtl){
                 console.log(result.resultMsg);
-                $("#"+ writingDtl.writingSeq).hide();
+                $("#"+ result.writingDtl.writingSeq).hide();
             },
             error       : function(jqXhr, status, error){
                 alert("에러가 발생하였습니다.");
