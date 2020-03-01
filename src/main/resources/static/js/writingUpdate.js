@@ -21,6 +21,7 @@ function bindObjectEvt() {
             cache       : false,
             success     : function(result){
                 console.log(result.resultMsg);
+                $("#"+ writingseq).hide();
             },
             error       : function(jqXhr, status, error){
                 alert("에러가 발생하였습니다.");
