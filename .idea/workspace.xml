@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3982798-d952-403e-9839-f3d954bd78a2" name="Default Changelist" comment="">
+    <list default="true" id="e3982798-d952-403e-9839-f3d954bd78a2" name="Default Changelist" comment="검색 prefix 추가">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3a0eadd2-8175-46c3-9bc9-6a601d40dade.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/6a8778e9-10ce-4f1c-98f3-ffc7149f5b9d.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/6a8778e9-10ce-4f1c-98f3-ffc7149f5b9d/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/dataSources/84f67420-1051-4da7-b9e6-ff1d63b30ab1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/dataSources/84f67420-1051-4da7-b9e6-ff1d63b30ab1/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/META-INF/nuguya.kotlin_module" afterDir="false" />
@@ -13,6 +16,7 @@
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Controller/MainController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Controller/PostController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Controller/TestRunner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Controller/WritingMngController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Entity/Writing.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Entity/WritingDtl.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Entity/WritingType.class" afterDir="false" />
@@ -22,24 +26,46 @@
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Repository/WritingRepository.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Repository/WritingTypeRepository.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Service/CrawlingService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Service/WritingMngService.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Service/WritingService.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/Service/WritingTypeService.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/io/weeks/nuguya/dto/CrawlingDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/css/style.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/static/js/writing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/writingUpdate.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/templates/writing.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/writingCategory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/writingUpdate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/nuguya-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/nuguya-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-io.weeks.nuguya.NuguyaApplicationTests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/io.weeks.nuguya.NuguyaApplicationTests.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/test-classes/io/weeks/nuguya/NuguyaApplicationTests.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/test-classes/io/weeks/nuguya/RepositoryTest/WritingDtlRepositoryTest.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/test-classes/io/weeks/nuguya/RepositoryTest/WritingRepositoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436/storage_v2/_src_/schema/sys.zb4BAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436/storage_v2/_src_/schema/sys.zb4BAA.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3a0eadd2-8175-46c3-9bc9-6a601d40dade/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8d0fa6c-601a-4e5a-982c-496411de5436/storage_v2/_src_/schema/sys.zb4BAA.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Repository/WritingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Repository/WritingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -55,21 +81,6 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="nuguya" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="nuguya" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="nuguya" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="nuguya: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="ssgAvengers" type="feb32156:DbDataSourceImpl" />
       </path>
     </expand>
@@ -79,7 +90,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -111,6 +124,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -120,14 +134,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/io/weeks/nuguya" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../2weeks-common-library" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dksek\Documents\workspace\nuguya2\src\main\resources\templates" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.NuguyaApplication">
     <configuration name="WritingDtlRepositoryTest.writingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -198,7 +217,17 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:nuguya" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:nuguya" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@7bd93e28" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -227,7 +256,11 @@
       <workItem from="1581950389286" duration="657000" />
       <workItem from="1582189339934" duration="2109000" />
       <workItem from="1582193177828" duration="3107000" />
-      <workItem from="1582278478013" duration="351000" />
+      <workItem from="1582278478013" duration="17655000" />
+      <workItem from="1582430153106" duration="4508000" />
+      <workItem from="1582811448534" duration="4522000" />
+      <workItem from="1582885937027" duration="21108000" />
+      <workItem from="1583029201612" duration="5176000" />
     </task>
     <task id="LOCAL-00001" summary="Writing 데이터 MySql 테스트 완료">
       <created>1580827288323</created>
@@ -257,111 +290,348 @@
       <option name="project" value="LOCAL" />
       <updated>1582278633588</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="운영 크롤링 서버 주소 추가">
+      <created>1582278896588</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1582278896588</updated>
+    </task>
+    <task id="LOCAL-00006" summary="크롤링 요청 서버 오타 수정">
+      <created>1582281869771</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1582281869771</updated>
+    </task>
+    <task id="LOCAL-00007" summary="크롤링 요청 서버 오타 수정2">
+      <created>1582281937296</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1582281937296</updated>
+    </task>
+    <task id="LOCAL-00008" summary="상세 데이터 해쉬태그 추가">
+      <created>1582288124332</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1582288124332</updated>
+    </task>
+    <task id="LOCAL-00009" summary="검색 prefix 추가">
+      <created>1582290039966</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1582290039966</updated>
+    </task>
+    <task id="LOCAL-00010" summary="랜덤 보기 셔플 로직 추가">
+      <created>1582296903029</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1582296903029</updated>
+    </task>
+    <task id="LOCAL-00011" summary="제목 , 붙는 문제 해결">
+      <created>1582298096646</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1582298096646</updated>
+    </task>
+    <task id="LOCAL-00012" summary="포트 8080 수정">
+      <created>1582299546272</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1582299546272</updated>
+    </task>
+    <task id="LOCAL-00013" summary="카테고리 유형 조회 코드 api 추가">
+      <created>1582432964175</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1582432964175</updated>
+    </task>
+    <task id="LOCAL-00014" summary="카테고리페이지 사용여부 추가">
+      <created>1582819060755</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1582819060755</updated>
+    </task>
+    <task id="LOCAL-00015" summary="젠킨스 연동 테스트">
+      <created>1582819991426</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1582819991426</updated>
+    </task>
+    <task id="LOCAL-00016" summary="젠킨스 연동 테스트">
+      <created>1582820720369</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1582820720369</updated>
+    </task>
+    <task id="LOCAL-00017" summary="게시글 상세 삭제 기능 추가1">
+      <created>1582899469977</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1582899469977</updated>
+    </task>
+    <task id="LOCAL-00018" summary="게시글 상세 삭제 구현">
+      <created>1582903254354</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1582903254354</updated>
+    </task>
+    <task id="LOCAL-00019" summary="ajax 오류 수정">
+      <created>1582905143064</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1582905143064</updated>
+    </task>
+    <task id="LOCAL-00020" summary="스크립트 오류 수정">
+      <created>1582905513585</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1582905513585</updated>
+    </task>
+    <task id="LOCAL-00021" summary="서버환경에 따른 이미지 요청 주소 변경">
+      <created>1582906680408</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1582906680408</updated>
+    </task>
+    <task id="LOCAL-00022" summary="삭제 시 hide 기능 추가">
+      <created>1583029954208</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1583029954208</updated>
+    </task>
+    <task id="LOCAL-00023" summary="삭제 숨기기 기능 추가">
+      <created>1583031176308</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1583031176308</updated>
+    </task>
+    <task id="LOCAL-00024" summary="검색 숨기기 기능 추가">
+      <created>1583031377294</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1583031377294</updated>
+    </task>
+    <task id="LOCAL-00025" summary="삭제후 숨기기 기능 추가">
+      <created>1583031538804</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1583031538804</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Writing 데이터 MySql 테스트 완료" />
     <MESSAGE value="JPA Join 연동" />
     <MESSAGE value="게시글 상세 api 구현 완료" />
     <MESSAGE value="운영 환경 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="운영 환경 설정" />
+    <MESSAGE value="운영 크롤링 서버 주소 추가" />
+    <MESSAGE value="크롤링 요청 서버 오타 수정" />
+    <MESSAGE value="크롤링 요청 서버 오타 수정2" />
+    <MESSAGE value="상세 데이터 해쉬태그 추가" />
+    <MESSAGE value="검색 prefix 추가" />
+    <MESSAGE value="랜덤 보기 셔플 로직 추가" />
+    <MESSAGE value="제목 , 붙는 문제 해결" />
+    <MESSAGE value="포트 8080 수정" />
+    <MESSAGE value="카테고리 유형 조회 코드 api 추가" />
+    <MESSAGE value="카테고리페이지 사용여부 추가" />
+    <MESSAGE value="젠킨스 연동 테스트" />
+    <MESSAGE value="게시글 상세 삭제 기능 추가1" />
+    <MESSAGE value="게시글 상세 삭제 구현" />
+    <MESSAGE value="ajax 오류 수정" />
+    <MESSAGE value="스크립트 오류 수정" />
+    <MESSAGE value="서버환경에 따른 이미지 요청 주소 변경" />
+    <MESSAGE value="삭제 시 hide 기능 추가" />
+    <MESSAGE value="삭제 숨기기 기능 추가" />
+    <MESSAGE value="검색 숨기기 기능 추가" />
+    <MESSAGE value="삭제후 숨기기 기능 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="삭제후 숨기기 기능 추가" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Assign_Data_Sources" timestamp="1580920614861">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" key="#Assign_Data_Sources/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580920614861" />
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582193551681">
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582282553928">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1582193551681" />
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1582282553928" />
     <state x="372" y="308" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580822072467" />
-    <state x="448" y="13" key="CommitChangelistDialog2" timestamp="1582278630336">
+    <state x="560" y="271" width="415" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582297057094">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="448" y="13" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582278630336" />
+    <state x="560" y="271" width="415" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1582297057094" />
+    <state x="341" y="13" key="CommitChangelistDialog2" timestamp="1583031534867">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="341" y="13" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582906673823" />
+    <state x="341" y="13" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583031534867" />
     <state x="560" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580919857866" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1582197119662">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1583029935073">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582197119662" />
-    <state width="1493" height="298" key="GridCell.Tab.0.bottom" timestamp="1582278832016">
+    <state x="93" y="93" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582899439696" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1583029935073" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1583033321651">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582899266697" />
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583033321651" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1583035337220">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="298" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689351" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583035337220" />
     <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921619696" />
-    <state width="1493" height="298" key="GridCell.Tab.0.center" timestamp="1582278832016">
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1583035337220">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state width="1493" height="298" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689349" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583035337220" />
     <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921619696" />
-    <state width="1493" height="298" key="GridCell.Tab.0.left" timestamp="1582278832016">
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1583035337220">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state width="1493" height="298" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689349" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583035337220" />
     <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921619696" />
-    <state width="1493" height="298" key="GridCell.Tab.0.right" timestamp="1582278832016">
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1583035337220">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state width="1493" height="298" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689351" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583035337220" />
     <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921619696" />
-    <state width="1493" height="298" key="GridCell.Tab.1.bottom" timestamp="1582278832016">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689340" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921555894" />
-    <state width="1493" height="298" key="GridCell.Tab.1.center" timestamp="1582278832016">
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689340" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
     <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921555894" />
-    <state width="1493" height="298" key="GridCell.Tab.1.left" timestamp="1582278832016">
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689340" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
     <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921555893" />
-    <state width="1493" height="298" key="GridCell.Tab.1.right" timestamp="1582278832016">
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1582278832016" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689340" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580921555894" />
-    <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1581758828069">
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581758828069" />
-    <state width="1493" height="261" key="GridCell.Tab.2.center" timestamp="1581758828069">
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689341" />
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
+    <state width="1493" height="261" key="GridCell.Tab.2.center" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1581758828069" />
-    <state width="1493" height="261" key="GridCell.Tab.2.left" timestamp="1581758828069">
+    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689340" />
+    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
+    <state width="1493" height="261" key="GridCell.Tab.2.left" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1581758828069" />
-    <state width="1493" height="261" key="GridCell.Tab.2.right" timestamp="1581758828069">
+    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689340" />
+    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
+    <state width="1493" height="261" key="GridCell.Tab.2.right" timestamp="1583035337221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1581758828069" />
+    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582907689340" />
+    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1583035337221" />
     <state width="207" height="477" key="HiddenNamespacesPopup" timestamp="1580910931214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="207" height="477" key="HiddenNamespacesPopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580910931214" />
-    <state x="568" y="168" key="SettingsEditor" timestamp="1580920739429">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="371" y="75" key="Registry" timestamp="1582891550967">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="371" y="75" key="Registry/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582891550967" />
+    <state x="522" y="123" key="RollbackChangesDialog" timestamp="1582299036307">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="522" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1582299036307" />
+    <state x="454" y="110" key="SettingsEditor" timestamp="1582891698178">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="454" y="110" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582891698178" />
     <state x="568" y="168" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580920739429" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1582278644034">
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1583031547081">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582278644034" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582906679325" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583031547081" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580919868591" />
-    <state x="521" y="147" key="VcsDiffUtil.ChangesDialog" timestamp="1581732404167">
+    <state x="521" y="147" key="VcsDiffUtil.ChangesDialog" timestamp="1583030691703">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="521" y="147" key="VcsDiffUtil.ChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1581732404167" />
+    <state x="521" y="147" key="VcsDiffUtil.ChangesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582819332482" />
+    <state x="521" y="147" key="VcsDiffUtil.ChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1583030691703" />
     <state x="571" y="190" key="chooseDestDirectoryDialog" timestamp="1580725760222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -370,22 +640,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="819" y="267" key="com.intellij.database.view.ui.DbObjectDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580822754617" />
-    <state x="459" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1582278479051">
+    <state x="459" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1582885939545">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="459" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582278479051" />
-    <state x="550" y="246" key="git4idea.merge.GitPullDialog" timestamp="1582278760885">
+    <state x="459" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582885939545" />
+    <state x="459" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582430155992" />
+    <state x="550" y="246" key="git4idea.merge.GitPullDialog" timestamp="1582819305720">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="550" y="246" key="git4idea.merge.GitPullDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582819305720" />
     <state x="550" y="246" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1582278760885" />
     <state x="688" y="311" key="git4idea.merge.GitPullDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580827088817" />
     <state x="538" y="313" key="git4idea.ui.GitStashDialog" timestamp="1581732368735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="538" y="313" key="git4idea.ui.GitStashDialog/0.0.1536.824@0.0.1536.824" timestamp="1581732368735" />
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1582194158354">
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1582891507456">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582891507456" />
     <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582194158354" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1580919652888" />
   </component>
@@ -394,13 +667,83 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/DetailController.java</url>
-          <line>62</line>
+          <line>64</line>
           <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/DetailController.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/DetailController.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Service/WritingService.java</url>
           <line>210</line>
-          <option name="timeStamp" value="44" />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/DetailController.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/PostController.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/PostController.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/PostController.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/PostController.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/WritingMngController.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Service/WritingMngService.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/io/weeks/2weeks-common-library/0.0.1-SNAPSHOT/2weeks-common-library-0.0.1-SNAPSHOT.jar!/io/weeks/FileService/FileService.class</url>
+          <line>20</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Service/WritingMngService.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Service/WritingMngService.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Controller/MainController.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/weeks/nuguya/Service/WritingService.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

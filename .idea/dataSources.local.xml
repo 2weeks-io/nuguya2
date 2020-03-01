@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="nuguya" uuid="d8d0fa6c-601a-4e5a-982c-496411de5436">
+    <data-source name="ssgAvengers" uuid="84f67420-1051-4da7-b9e6-ff1d63b30ab1">
       <database-info product="MySQL" version="8.0.19" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="8.0.19" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -11,11 +11,25 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" negative="1" />
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="ssgAvengers" uuid="84f67420-1051-4da7-b9e6-ff1d63b30ab1">
+    <data-source name="nuguya" uuid="3a0eadd2-8175-46c3-9bc9-6a601d40dade">
+      <database-info product="MySQL" version="8.0.19" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="8.0.19" exact-driver-version="8.0">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+    <data-source name="dev_nuguya" uuid="6a8778e9-10ce-4f1c-98f3-ffc7149f5b9d">
       <database-info product="MySQL" version="8.0.19" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="8.0.19" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
