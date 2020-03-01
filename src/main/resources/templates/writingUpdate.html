@@ -26,8 +26,8 @@
 <table style="margin-left: auto; margin-right: auto; width: 65%;">
     <tr>
         <th>정답</th>
-        <th>원본 이미지</th>
-        <th>합성 이미지</th>
+        <th>이미지 경로</th>
+        <th>이미지</th>
     </tr>
     <tr th:each="writingDtl : ${writingDtlList}" style="cursor:pointer;" th:id="${writingDtl.writingSeq}">
         <td th:text="${writingDtl.answer}" ></td>

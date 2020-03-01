@@ -54,6 +54,7 @@ public class WritingMngController {
         resultMsg = writingMngService.deleteWritingDtl(writingDtl);
 
         jsonObject.put("resultMsg", resultMsg);
+        jsonObject.put("writingDtl", writingDtl);
 
         return jsonObject;
     }
