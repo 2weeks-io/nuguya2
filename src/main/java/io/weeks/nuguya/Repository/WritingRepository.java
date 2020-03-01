@@ -18,6 +18,8 @@ public interface WritingRepository extends JpaRepository<Writing, Long> {
 
     List<Writing> findByWritingDivCd(String writingDivCd);
 
+    List<Writing> findByWritingDivCdOrderByRegDtsDesc(String writingDivCd);
+
     Page<Writing> findByWritingDivCd(Pageable pageable, String writingDivCd);
 
     //Page<Writing> findByWritingDivCdAndUseYn(Pageable pageable, String writingDivCd, String useYn);

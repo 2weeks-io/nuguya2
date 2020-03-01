@@ -6,6 +6,9 @@ import io.weeks.nuguya.Entity.WritingDtl;
 import io.weeks.nuguya.Service.WritingMngService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +30,16 @@ public class WritingMngController {
     private String reqServerUrl;
 
     /*
-     ** 게시글 상세 업데이트 페이지 반환
+     ** 누구야 관리페이지
+     */
+    @GetMapping(value = "/page/nuguyaMenu")
+    public String getWritingUpdate(Model model) throws Exception{
+
+        return "nuguyaMenu";
+    }
+
+    /*
+     ** 게시글 상세 업데이트 페이지 이동
      */
     @GetMapping(value = "/page/writingUpdate/{writingNo}")
     public String getWritingUpdate(Model model, Writing writing) throws Exception{
@@ -41,6 +53,20 @@ public class WritingMngController {
         model.addAttribute("reqServerUrl", reqServerUrl);
 
         return "writingUpdate";
+    }
+
+    /*
+     ** 카테고리에 따른 게시글 목록 페이지
+     */
+    @GetMapping(value = "/page/writingCategory/{writingDivCd}")
+    public String getWritingCategory(Model model, Writing writing) throws Exception{
+
+        List<Writing> writingList = writingMngService.getWritingList(writing);
+
+        model.addAttribute("writingList", writingList);
+        model.addAttribute("reqServerUrl", reqServerUrl);
+
+        return "writingCategory";
     }
 
     /*

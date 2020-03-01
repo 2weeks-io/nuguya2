@@ -7,8 +7,11 @@ import io.weeks.nuguya.Repository.WritingDtlRepository;
 import io.weeks.nuguya.Repository.WritingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -29,11 +32,25 @@ public class WritingMngService {
     @Value("${weeks.fileUploadPath}")
     private String fileUploadPath;
 
+    /*
+     **  게시글 상세 조회
+     */
     public Writing getWritingDtl(Writing writing){
         writing = writingRepository.findByWritingNo(writing.getWritingNo());
         return writing;
     }
 
+    /*
+    **  등록구분에 따른 게시글 리스트 조회
+     */
+    public List<Writing>  getWritingList(Writing writing) throws Exception{
+        List<Writing> writingList = writingRepository.findByWritingDivCdOrderByRegDtsDesc(writing.getWritingDivCd());
+        return writingList;
+    }
+
+    /*
+     **  게시글 상세 삭제
+     */
     public String deleteWritingDtl(WritingDtl writingDtl) throws Exception{
 
         String resultMsg = "success";

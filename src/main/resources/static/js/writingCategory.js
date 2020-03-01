@@ -1,16 +1,16 @@
 function bindObjectEvt() {
 
     //게시글 상세 삭제
-    $("input[name='itemImgPurgeBtn']").click(function(){
+    $("input:button[name=delBtn]").click(function () {
         var writingNo  = $(this).data("writingno");
         var writingSeq = $(this).data("writingseq");
 
         var url = "/nuguya/writingDtl/" + writingNo + "/" + writingSeq;
 
         param = {
-                     writingNo     : writingNo
-                   , writingSeq : writingSeq
-                };
+            writingNo     : writingNo
+            , writingSeq : writingSeq
+        };
 
         $.ajax({
             async       : true,
@@ -29,4 +29,9 @@ function bindObjectEvt() {
         });
 
     });
+}
+
+function redirectWritingDtlUpdate(obj){
+    var writingNo = obj.data("writingno");
+    window.location.href = '/nuguya/page/writingUpdate/' + writingNo;
 }
