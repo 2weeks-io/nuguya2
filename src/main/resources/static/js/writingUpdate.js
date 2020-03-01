@@ -19,7 +19,7 @@ function bindObjectEvt() {
             type        : "DELETE",
             data        : param,
             cache       : false,
-            success     : function(result, writingDtl){
+            success     : function(result){
                 console.log(result.resultMsg);
                 $("#"+ result.writingDtl.writingSeq).hide();
             },
