@@ -17,6 +17,8 @@ public interface WritingDtlRepository extends JpaRepository<WritingDtl, Long> {
 
     List<WritingDtl> findByWritingNo(Integer writingNo);
 
+    List<WritingDtl> findByWritingNoOrderByRegDtsDesc(Long writingNo);
+
     void deleteByWritingNoAndWritingSeq(Long writingNo, Long WritingSeq);
 
     WritingDtl findByWritingNoAndWritingSeq(Long writingNo, Long writingSeq);

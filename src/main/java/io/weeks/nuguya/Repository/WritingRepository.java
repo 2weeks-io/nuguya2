@@ -26,4 +26,6 @@ public interface WritingRepository extends JpaRepository<Writing, Long> {
 
     @Query("select w from Writing w where w.writingDivCd = :writingDivCd and w.useYn = :useYn order by function('RAND')")
     Page<Writing> findByWritingDivCdAndUseYn(Pageable pageable, @Param("writingDivCd") String writingDivCd, @Param("useYn") String useYn);
+
+    Writing findByWritingNoOrderByRegDtsDesc(Long writingNo);
 }

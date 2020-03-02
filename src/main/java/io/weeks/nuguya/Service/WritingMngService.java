@@ -36,7 +36,10 @@ public class WritingMngService {
      **  게시글 상세 조회
      */
     public Writing getWritingDtl(Writing writing){
-        writing = writingRepository.findByWritingNo(writing.getWritingNo());
+        writing = writingRepository.findByWritingNoOrderByRegDtsDesc(writing.getWritingNo());
+        List<WritingDtl> writingDtlList = writingDtlRepository.findByWritingNoOrderByRegDtsDesc(writing.getWritingNo());
+        writing.setWritingDtlList(writingDtlList);
+
         return writing;
     }
 
