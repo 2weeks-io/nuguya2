@@ -21,11 +21,14 @@ public class DetailController {
     @Autowired
     private WritingService writingService;
 
+    /*
+     ** 게임글 상세 조회
+     */
     @GetMapping(value = "/writing/{writingNo}/{pageSize}", produces = "application/json; charset=UTF-8")
     public Map<String,Object> getWriting(Pageable pageable, @PathVariable Long writingNo, @PathVariable int pageSize) throws Exception{
 
         String resultMsg = "success";
-        Map<String, Object> jsonObject =new HashMap<String, Object>();
+        Map<String, Object> resultMap =new HashMap<String, Object>();
 
         Writing writing = new Writing();
         writing.setWritingNo(writingNo);
@@ -53,12 +56,15 @@ public class DetailController {
             resultMsg = "fail";
         }
 
-        jsonObject.put("content", writing);
-        jsonObject.put("resultMsg", resultMsg);
+        resultMap.put("content", writing);
+        resultMap.put("resultMsg", resultMsg);
 
-        return jsonObject;
+        return resultMap;
     }
 
+    /*
+     ** 게임 총 점수 업데이트
+     */
     @PostMapping(value = "/writing/{writingNo}/{score}", produces = "application/json; charset=UTF-8")
     public Map<String, Object> updateWritingScore(Writing writing){
 

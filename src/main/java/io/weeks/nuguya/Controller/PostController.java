@@ -1,7 +1,6 @@
 package io.weeks.nuguya.Controller;
 
 import io.weeks.nuguya.Entity.Writing;
-import io.weeks.nuguya.Entity.WritingDtl;
 import io.weeks.nuguya.Service.WritingService;
 import io.weeks.nuguya.dto.CrawlingDto;
 import org.slf4j.Logger;
@@ -11,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class PostController {
@@ -57,6 +58,17 @@ public class PostController {
         }
 
         return "index";
+    }
+
+    /*
+     ** 공유 횟수 업데이트
+     */
+    @PutMapping(value = "/writing/{writingNo}/{shareDivCd}")
+    public @ResponseBody Map<String, Object> updateShareNum(Writing writing) throws Exception{
+
+        Map<String, Object> resultMap = writingService.updateShareNum(writing);
+
+        return resultMap;
     }
 
 }

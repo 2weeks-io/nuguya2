@@ -36,12 +36,16 @@ public class Writing extends BaseTimeEntity {
 
     private int particiNum;
 
+    private int kakaoShareNum;    //카카오톡 공유 횟수
+
+    private int facebookShareNum; //페이스북 공유 횟수
+
     private String regpeId;
 
     private String modpeId;
 
     @Transient
-    private String srchPrefix;
+    private String srchPrefix; //검색 Prefix
 
     @Transient
     private String solvedNum;
@@ -51,6 +55,9 @@ public class Writing extends BaseTimeEntity {
 
     @Transient
     private List<String> members;
+
+    @Transient
+    private String shareDivCd; //게시글 구분 코드
 
     @OneToMany(mappedBy="writing")
     @JsonManagedReference

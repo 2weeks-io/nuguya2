@@ -18,9 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
@@ -164,6 +162,9 @@ public class WritingService {
         }
     }
 
+    /*
+     ** 카테고리 게시글 리스트 조회
+     */
     public Page<Writing> getMainWriting(Pageable pageable, String writingDivCd) throws Exception{
 
         String useYn = "Y";
@@ -171,6 +172,9 @@ public class WritingService {
         return writingRepository.findByWritingDivCdAndUseYn(pageable, writingDivCd, useYn);
     }
 
+    /*
+     ** 게시글 조회
+     */
     public Writing getWriting(Writing writing) throws Exception{
 
         Long writingNo = writing.getWritingNo();
@@ -178,7 +182,9 @@ public class WritingService {
         return writingRepository.findByWritingNo(writingNo);
     }
 
-
+    /*
+     ** 게시글 상세 랜덤 조회
+     */
     public List<WritingDtl> getRandomWritingDtl(Long writingNo, Pageable pageable) throws Exception{
 
         return writingDtlRepository.findByRandomWritingNo(writingNo, pageable).getContent();
@@ -283,4 +289,39 @@ public class WritingService {
         return members;
     }
 
+    /*
+     ** 공유하기 횟수 업데이트
+     */
+    public Map<String, Object> updateShareNum(Writing writing) {
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Writing updateWriting = new Writing();
+        String resultMsg = "success";
+
+        try {
+            Writing curWriting = writingRepository.findByWritingNo(writing.getWritingNo());
+
+            String shareDivCd = writing.getShareDivCd();
+            int shareNum = 0;
+            if("10".equals(shareDivCd)){   //카카오 공유 횟수 업데이트
+                shareNum = curWriting.getKakaoShareNum() + 1;
+                curWriting.setKakaoShareNum(shareNum);
+            } else if("20".equals(shareDivCd)){ //페이스북 공유 횟수 업데이트
+                shareNum = curWriting.getFacebookShareNum() + 1;
+                curWriting.setFacebookShareNum(shareNum);
+            }
+
+            updateWriting = writingRepository.save(curWriting);
+
+        } catch(Exception e){
+            resultMsg = "fail";
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        resultMap.put("resultMsg", resultMsg);
+        resultMap.put("writing", updateWriting);
+
+        return resultMap;
+    }
 }

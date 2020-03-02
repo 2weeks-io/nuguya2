@@ -19,6 +19,9 @@ public class CrawlingService {
     @Autowired
     FileConfigDto fileConfigDto;
 
+    /*
+     ** 이미지 크롤링
+     */
     public JSONObject getCrawlingImg(CrawlingDto crawlingDto) {
 
         String requestUrl = crawlingDto.getRequestUrl();

@@ -34,7 +34,7 @@ public class MainController {
     }
 
     /*
-     ** 게임 유형 리스트 조회
+     ** 게임 유형 리스트 조회 (메인페이지)
      */
     @GetMapping(value ="/writingTypes", produces = "application/json; charset=UTF-8")
     public Map<String,Object> getWritingTypes() throws Exception{
@@ -48,12 +48,12 @@ public class MainController {
             writingType.setParticiNum(sumParticiNum);
         }
 
-        Map<String, Object> jsonObject =new HashMap<String, Object>();
+        Map<String, Object> resultMap =new HashMap<String, Object>();
 
-        jsonObject.put("content", writingTypeList);
-        jsonObject.put("resultMsg", resultMsg);
+        resultMap.put("content", writingTypeList);
+        resultMap.put("resultMsg", resultMsg);
 
-        return jsonObject;
+        return resultMap;
     }
 
     /*
@@ -65,39 +65,38 @@ public class MainController {
         String resultMsg = "success";
 
         WritingType writingType = new WritingType();
-        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<String, Object>();
 
         try {
             writingType = writingTypeService.getWritingType(writingDivCd);
-            jsonObject.put("content", writingType);
-            jsonObject.put("resultMsg", resultMsg);
+            resultMap.put("content", writingType);
+            resultMap.put("resultMsg", resultMsg);
         } catch(RuntimeException e){
             resultMsg = "fail";
-            jsonObject.put("resultMsg", resultMsg);
+            resultMap.put("resultMsg", resultMsg);
         }
 
-        return jsonObject;
+        return resultMap;
     }
 
     /*
-     ** 게임 유형 리스트 조회
+     ** 게임 리스트 조회 (카테고리 페이지)
      */
     @GetMapping(value ="/writings/{writingDivCd}/{pageNum}/{pageSize}", produces = "application/json; charset=UTF-8")
     public Map<String,Object> getWritings(Pageable pageable, @PathVariable Integer pageNum, @PathVariable Integer pageSize, @PathVariable String writingDivCd) throws Exception{
 
         String resultMsg = "success";
 
-        //일단 등록 순으로 정렬 -> 랜덤으로 바꿔야할꺼 같은데
         pageable = PageRequest.of(pageNum, pageSize, Sort.by("regDts").descending());
 
         Page<Writing>  writingList = writingService.getMainWriting(pageable, writingDivCd);
 
-        Map<String, Object> jsonObject =new HashMap<String, Object>();
+        Map<String, Object> resultMap =new HashMap<String, Object>();
 
-        jsonObject.put("content", writingList);
-        jsonObject.put("resultMsg", resultMsg);
+        resultMap.put("content", writingList);
+        resultMap.put("resultMsg", resultMsg);
 
-        return jsonObject;
+        return resultMap;
     }
 
 }

@@ -75,14 +75,14 @@ public class WritingMngController {
     @DeleteMapping(value = "/writingDtl/{writingNo}/{writingSeq}")
     public @ResponseBody Map<String,Object> deleteWritingDtl(WritingDtl writingDtl) throws Exception{
         String resultMsg = "";
-        Map<String, Object> jsonObject =new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<String, Object>();
 
         resultMsg = writingMngService.deleteWritingDtl(writingDtl);
 
-        jsonObject.put("resultMsg", resultMsg);
-        jsonObject.put("writingDtl", writingDtl);
+        resultMap.put("resultMsg", resultMsg);
+        resultMap.put("writingDtl", writingDtl);
 
-        return jsonObject;
+        return resultMap;
     }
 
 }

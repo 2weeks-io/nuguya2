@@ -18,6 +18,9 @@ public class WritingTypeService {
     @Autowired
     private WritingRepository writingRepository;
 
+    /*
+     ** 게임 유형 데이터 리스트 조회
+     */
     public List<WritingType> getWritingTypes(){
 
         return writingTypeRepository.findAll();
