@@ -63,7 +63,7 @@ public class PostController {
     /*
      ** 공유 횟수 업데이트
      */
-    @PutMapping(value = "/writing/{writingNo}/{shareDivCd}")
+    @PutMapping(value = "/writing/{writingNo}/{shareDivCd}", produces = "application/json; charset=UTF-8")
     public @ResponseBody Map<String, Object> updateShareNum(Writing writing) throws Exception{
 
         Map<String, Object> resultMap = writingService.updateShareNum(writing);

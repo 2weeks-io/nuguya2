@@ -320,7 +320,7 @@ public class WritingService {
         }
 
         resultMap.put("resultMsg", resultMsg);
-        resultMap.put("writing", updateWriting);
+        resultMap.put("content", updateWriting);
 
         return resultMap;
     }
