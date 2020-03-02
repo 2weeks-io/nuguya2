@@ -61,6 +61,23 @@ public class PostController {
     }
 
     /*
+     ** 게시글 상세 데이터 추가
+     */
+    @PostMapping(value = "/write/detail")
+    public String updateWrite(HttpServletRequest request, HttpSession session, Writing writing) throws Exception{
+
+        writing.setRegpeId(session.toString());
+        writing.setModpeId(session.toString());
+        writing.setUseYn("Y");
+
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
+
+        Map<String, Object> resultMap = writingService.updateWriting(writing, multipartRequest);
+
+        return "nuguyaMenu";
+    }
+
+    /*
      ** 공유 횟수 업데이트
      */
     @PutMapping(value = "/writing/{writingNo}/{shareDivCd}", produces = "application/json; charset=UTF-8")

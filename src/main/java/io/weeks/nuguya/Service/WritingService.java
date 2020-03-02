@@ -324,4 +324,58 @@ public class WritingService {
 
         return resultMap;
     }
+
+    public Map<String, Object> updateWriting(Writing writing, MultipartHttpServletRequest multipartRequest) {
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+
+        try{
+
+            if ("10".equals(writing.getWritingDivCd())) {  //모자이크 게임 추가 등록
+
+                String appName        = fileConfigDto.getApplicationName();
+                String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
+                String saveFilePath   = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
+                String path           = fileUploadPath + saveFilePath;
+
+                List<MultipartFile> oriImgFile   = multipartRequest.getFiles("oriImgFile");
+
+                int oriImgFileSize   = oriImgFile.size();
+
+                int oriLen   = 0;
+
+                //원본 이미지 개수
+                for(int j=0;j<oriImgFileSize;j++) {
+                    if(!oriImgFile.get(j).isEmpty()) {
+                        oriLen++;
+                    } else {
+                        break;
+                    }
+                }
+
+                //이미지 등록
+                for(int i=1;i<=oriLen;i++) {
+                    String oriImgPath1   = "/assets/" + appName + saveFilePath + fileService.restore(oriImgFile.get(i-1), path);
+                    String answer        = writing.getAnswer().get(i-1);
+                    WritingDtl writingDtl = new WritingDtl();
+                    writingDtl.setRegpeId(writing.getRegpeId());
+                    writingDtl.setModpeId(writing.getModpeId());
+                    writingDtl.setAnswer(answer);
+                    writingDtl.setWritingNo(writing.getWritingNo());
+
+                    //이미지 경로 저장
+                    writingDtl.setOriImgPath1(oriImgPath1);
+                    writingDtl.setWriting(writing);
+                    writingDtlRepository.save(writingDtl);
+                }
+
+            } else if ("20".equals(writing.getWritingDivCd())) { //눈코입 게임 추가 등록
+
+            }
+
+        } catch(Exception e){
+            throw new RuntimeException(e);
+        }
+
+        return resultMap;
+    }
 }

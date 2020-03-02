@@ -30,3 +30,19 @@ function bindObjectEvt() {
 
     });
 }
+
+function addImgFile(){
+    const str = `<p>
+                    이미지: <input type="file" name="oriImgFile"   style="width:200px">
+                    정답: <input type="text" name="answer" style="width:200px">
+                </p>`;
+
+    var writingDivCd = $("input[name=writingDivCd]").val();
+
+    if(writingDivCd === '10'){
+        $("#writingRegDivCd10").append(str);
+    } else if(writingDivCd === '20'){
+        $("#writingRegDivCd20").append(str);
+    }
+
+}
