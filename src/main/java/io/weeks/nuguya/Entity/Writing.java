@@ -27,6 +27,8 @@ public class Writing extends BaseTimeEntity {
 
     private String titleImgPath;
 
+    private String main_ctg;
+
     private String useYn;
 
     @Transient

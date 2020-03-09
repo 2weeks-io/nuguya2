@@ -24,13 +24,23 @@
         <h2>게임 유형 선택</h2>
         <input type="radio" name="writingDivCd" value="10" checked="checked">모자이크
         <input type="radio" name="writingDivCd" value="20">눈코입
+        <input type="radio" name="writingDivCd" value="30">심리테스트게임
     </div>
 
-    <div id="writingRegDivCd10" style="margin-left:100px;">
+    <div id="writingRegDivCd10" name="writingRegDivCd" style="margin-left:100px;">
         <p> 제목: <input type="text" id="title" name="title" style="width:100px"> <br></p>
 
         <p>
             대표이미지: <input type="file" name="titleImg" style="width:200px">
+        </p>
+
+        <p>
+            <input type="radio" name="mainCtg" value="10" checked="checked">여자아이돌
+            <input type="radio" name="mainCtg" value="20">남자아이돌
+            <input type="radio" name="mainCtg" value="30">여자배우
+            <input type="radio" name="mainCtg" value="40">남자배우
+            <input type="radio" name="mainCtg" value="50">여자BJ
+            <input type="radio" name="mainCtg" value="50">남자BJ
         </p>
 
         <p>
@@ -41,7 +51,7 @@
 
     </div>
 
-    <div id="writingRegDivCd20" style="display:none;margin-left:100px;">
+    <div id="writingRegDivCd20" name="writingRegDivCd" style="display:none;margin-left:100px;">
 
         <p> 제목: <input type="text" name="title" style="width:200px"></p>
 
@@ -56,6 +66,27 @@
             합성이미지: <input type="file" name="compoImgFile" style="width:200px">
             정답: <input type="text" name="answer" style="width:200px">
         </p>
+
+    </div>
+
+    <div id="writingRegDivCd30" name="writingRegDivCd" style="display:none;margin-left:100px;">
+
+        <p> 제목: <input type="text" name="title" style="width:200px"></p>
+
+        <p>
+            대표이미지: <input type="file" name="titleImg" style="width:200px">
+        </p>
+
+        <p>
+            검사결과 나올 유형들을 ','로 입력해주세요<br/>
+            유형 : <input type="text" name="target" id="target" style="width:600px"> <input name="addTestTypeBtn" type="button" value="유형 추가">
+        </p>
+
+        <table id="writingScoreTbl" name="writingScoreTbl" border="1">
+
+        </table>
+
+        </div>
 
     </div>
 
