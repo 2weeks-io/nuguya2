@@ -39,6 +39,8 @@ public class WritingDtl extends BaseTimeEntity{
 
     private String modpeId;
 
+    private String question;
+
     @Transient
     private String randAnswer;
 

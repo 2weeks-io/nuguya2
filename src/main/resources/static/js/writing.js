@@ -7,17 +7,52 @@ function bindObjectEvt() {
 
         $("#dataForm")[0].reset();
 
+        //등록구분에따른, show hide 처리 및 disabled 처리
         if (writingDivCd === "10") {
+            $("div[name=writingRegDivCd]").hide();
+            $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
+            
             $("#writingRegDivCd10").show();
-            $("#writingRegDivCd20").hide();
-            $("#writingRegDivCd20").find("input, select, button, textarea").prop("disabled", true);
+            $("#writingRegDivCd10").find("input, select, button, textarea").prop("disabled", false);
         } else if (writingDivCd === "20") {
-            $("#writingRegDivCd10").hide();
+            $("div[name=writingRegDivCd]").hide();
+            $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
+
             $("#writingRegDivCd20").show();
-            $("#writingRegDivCd10").find("input, select, button, textarea").prop("disabled", true);
+            $("#writingRegDivCd20").find("input, select, button, textarea").prop("disabled", false);
+        } else if(writingDivCd === "30"){
+            $("div[name=writingRegDivCd]").hide();
+            $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
+
+            $("#writingRegDivCd30").show();
+            $("#writingRegDivCd30").find("input, select, button, textarea").prop("disabled", false);
         }
 
         $("input:radio[name='writingDivCd']:radio[value='"+ writingDivCd + "']").prop("checked",true);
+    });
+
+    $("input:button[name=addTestTypeBtn]").click(function () {
+
+        var targets = $("#target").val();
+
+        //공백 제거
+        targets.replace(/(\s*)/g, "") ;
+
+        var targetList = targets.split(',');
+
+        var tblHeader = "<th>질문" + "</th>" +"<th>Yes or No" + "</th>"
+        $("#writingScoreTbl").append(tblHeader);
+
+        for ( var i in targetList ) {
+            var tableHeader ="<th>" + targetList[i] +"</th>";
+            $("#writingScoreTbl").append(tableHeader);
+        }
+
+
+    });
+
+    $("input:button[name=addQuestion]").click(function () {
+
     });
 
 }
