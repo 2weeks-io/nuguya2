@@ -383,12 +383,12 @@ public class WritingService {
 
         try{
 
-            if ("10".equals(writing.getWritingDivCd())) {  //모자이크 게임 추가 등록
+            String appName        = fileConfigDto.getApplicationName();
+            String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
+            String saveFilePath   = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
+            String path           = fileUploadPath + saveFilePath;
 
-                String appName        = fileConfigDto.getApplicationName();
-                String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
-                String saveFilePath   = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
-                String path           = fileUploadPath + saveFilePath;
+            if ("10".equals(writing.getWritingDivCd()) || "40".equals(writing.getWritingDivCd())) {  //모자이크 게임, 이름맞추기 게임 추가 등록
 
                 List<MultipartFile> oriImgFile   = multipartRequest.getFiles("oriImgFile");
 
@@ -420,8 +420,6 @@ public class WritingService {
                     writingDtl.setWriting(writing);
                     writingDtlRepository.save(writingDtl);
                 }
-
-            } else if ("20".equals(writing.getWritingDivCd())) { //눈코입 게임 추가 등록
 
             }
 
