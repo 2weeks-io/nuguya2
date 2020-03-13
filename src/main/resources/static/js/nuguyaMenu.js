@@ -9,4 +9,9 @@ function bindObjectEvt() {
     $("input[name='mozaWritingBtn']").click(function(){
         window.location.href = '/nuguya/page/writingCategory/10';
     });
+
+    //모자이크 게임 게시글 리스트 페이지 이동
+    $("input[name='guessNameBtn']").click(function(){
+        window.location.href = '/nuguya/page/writingCategory/40';
+    });
 }

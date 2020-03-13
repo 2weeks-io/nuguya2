@@ -40,7 +40,10 @@ public class PostController {
      ** 게시글 작성
      */
     @PostMapping(value = "/write")
-    public String write(HttpServletRequest request, HttpSession session, Writing writing, CrawlingDto crawlingDto) throws Exception{
+    public @ResponseBody Map<String,Object> write(HttpServletRequest request, HttpSession session, Writing writing, CrawlingDto crawlingDto) throws Exception{
+
+        String resultMsg = "success";
+        Map<String, Object> resultMap =new HashMap<String, Object>();
 
         writing.setRegpeId(session.toString());
         writing.setModpeId(session.toString());
@@ -50,14 +53,11 @@ public class PostController {
         writing.setTitle(title);
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
-        try {
-            writingService.insertWriting(writing, crawlingDto, multipartRequest);
-        } catch(RuntimeException e){
-            e.printStackTrace();
-            return "index";
-        }
 
-        return "index";
+        resultMsg = writingService.insertWriting(writing, crawlingDto, multipartRequest);
+        resultMap.put("resultMsg", resultMsg);
+
+        return resultMap;
     }
 
     /*

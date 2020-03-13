@@ -25,6 +25,7 @@
         <input type="radio" name="writingDivCd" value="10" checked="checked">모자이크
         <input type="radio" name="writingDivCd" value="20">눈코입
         <input type="radio" name="writingDivCd" value="30">심리테스트게임
+        <input type="radio" name="writingDivCd" value="40">이름 맞추기 게임
     </div>
 
     <div id="writingRegDivCd10" name="writingRegDivCd" style="margin-left:100px;">
@@ -34,6 +35,7 @@
             대표이미지: <input type="file" name="titleImg" style="width:200px">
         </p>
 
+        <!--  카테고리
         <p>
             <input type="radio" name="mainCtg" value="10" checked="checked">여자아이돌
             <input type="radio" name="mainCtg" value="20">남자아이돌
@@ -42,11 +44,12 @@
             <input type="radio" name="mainCtg" value="50">여자BJ
             <input type="radio" name="mainCtg" value="50">남자BJ
         </p>
+        -->
 
         <p>
-            사진 하나당 크롤링할 개수 : <input type="text" id="crawlingNum" name="crawlingNum" style="width:100px"> <br>
+            사진 하나당 크롤링할 개수 : <input type="text" name="crawlingNum" style="width:100px"> <br>
             구글에서 가져올 이미지 키워드를 넣어주세요 <br>
-            <input type="text" id="srchPrefix" name="srchPrefix" style="width:50px"> : <input type="text" id="srhchKeywords" name="srhchKeywords" style="width:708px">
+            <input type="text" name="srchPrefix" style="width:50px"> : <input type="text" name="srhchKeywords" style="width:708px">
         </p>
 
     </div>
@@ -87,6 +90,21 @@
         </table>
 
         </div>
+
+    </div>
+
+    <div id="writingRegDivCd40" name="writingRegDivCd" style="display:none;margin-left:100px;">
+        <p> 제목: <input type="text" name="title" style="width:100px"> <br></p>
+
+        <p>
+            대표이미지: <input type="file" name="titleImg" style="width:200px">
+        </p>
+
+        <p>
+            사진 하나당 크롤링할 개수 : <input type="text" id="crawlingNum" name="crawlingNum" style="width:100px"> <br>
+            구글에서 가져올 이미지 키워드를 넣어주세요 <br>
+            <input type="text" id="srchPrefix" name="srchPrefix" style="width:50px"> : <input type="text" id="srhchKeywords" name="srhchKeywords" style="width:708px">
+        </p>
 
     </div>
 

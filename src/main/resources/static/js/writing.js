@@ -26,6 +26,12 @@ function bindObjectEvt() {
 
             $("#writingRegDivCd30").show();
             $("#writingRegDivCd30").find("input, select, button, textarea").prop("disabled", false);
+        } else if(writingDivCd === "40"){
+            $("div[name=writingRegDivCd]").hide();
+            $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
+
+            $("#writingRegDivCd40").show();
+            $("#writingRegDivCd40").find("input, select, button, textarea").prop("disabled", false);
         }
 
         $("input:radio[name='writingDivCd']:radio[value='"+ writingDivCd + "']").prop("checked",true);

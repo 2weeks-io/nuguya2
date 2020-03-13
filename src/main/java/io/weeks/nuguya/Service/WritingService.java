@@ -45,9 +45,12 @@ public class WritingService {
     /*
      ** 게임 게시글 업로드
      */
-    public void insertWriting(Writing writing, CrawlingDto crawlingDto, MultipartHttpServletRequest multipartRequest) throws Exception{
+    public String insertWriting(Writing writing, CrawlingDto crawlingDto, MultipartHttpServletRequest multipartRequest) throws Exception{
+
+        String resultMsg = "success";
 
         try {
+
             String appName        = fileConfigDto.getApplicationName();
             String fileUploadPath = fileConfigDto.getFileUploadPath(); //기본 파일 업로드 경로
             String saveFilePath   = fileService.makeSaveFilePath();   //날짜에 따른 폴더 경로
@@ -61,10 +64,7 @@ public class WritingService {
             if ("10".equals(writing.getWritingDivCd())) {  //모자이크 게임 등록
 
                 //크롤링 정보 입력
-                String keywords    = crawlingDto.getSrhchKeywords();
-                String crawlingNum = Long.toString(crawlingDto.getCrawlingNum());
-                String requestUrl  = crawlingUrl + "/" + appName + "/" + srchPrefix + "/" + keywords + "/" + crawlingNum;
-                crawlingDto.setRequestUrl(requestUrl);
+                setCrawlingInfo(crawlingDto, writing, appName);
 
                 //게시글 등록
                 Writing newWriting = writingRepository.save(writing);
@@ -153,13 +153,66 @@ public class WritingService {
                     writingDtlRepository.save(writingDtl);
                 }
 
+            } else if ("40".equals(writing.getWritingDivCd())) {  //모자이크 게임 등록
+
+                //크롤링 정보 입력
+                setCrawlingInfo(crawlingDto, writing, appName);
+
+                //게시글 등록
+                Writing newWriting = writingRepository.save(writing);
+
+                //JSONObject 파싱 후 상세 데이터 저장
+                JSONObject jsonObject = crawlingService.getCrawlingImg(crawlingDto);
+                String[] keywordArray = crawlingDto.getSrhchKeywords().split(",", 0);
+                int keywordLen = keywordArray.length;
+
+                for(int j=0;j<keywordLen;j++) {
+
+                    String keyword = keywordArray[j];
+
+                    System.out.println("keyword : " + keyword);
+                    //키워드별로 저장 위치 출력
+                    JSONArray imageList = (JSONArray) jsonObject.get(keyword);
+
+                    if(imageList == null){
+                        System.out.println("imageList is null");
+                        continue;
+                    }
+
+                    int imageLen = imageList.size();
+                    Long writingSeq = 0L;
+
+                    for (int i = 0; i < imageLen; i++) {
+
+                        WritingDtl writingDtl = new WritingDtl();
+                        writingDtl.setRegpeId(writing.getRegpeId());
+                        writingDtl.setModpeId(writing.getModpeId());
+                        writingDtl.setAnswer(keyword);
+                        writingDtl.setWritingNo(newWriting.getWritingNo());
+
+                        //배열 안에 있는것도 JSON형식 이기 때문에 JSON Object 로 추출
+                        Object fileInfoObj = (Object) imageList.get(i);
+
+                        //JSON name으로 추출
+                        System.out.println(fileInfoObj.toString());
+
+                        //이미지 경로 저장
+                        String resourcePath = "/assets/nuguya" + fileInfoObj.toString();
+
+                        writingDtl.setOriImgPath1(resourcePath);
+                        writingDtl.setWriting(writing);
+                        writingDtlRepository.save(writingDtl);
+                    }
+                }
+
             }
 
-            //List<Writing> writingList = writingRepository.findAll();
-
         } catch(Exception e){
+            resultMsg = "fail";
             throw new RuntimeException(e);
         }
+
+        return resultMsg;
     }
 
     /*
@@ -377,5 +430,18 @@ public class WritingService {
         }
 
         return resultMap;
+    }
+
+    public CrawlingDto setCrawlingInfo(CrawlingDto crawlingDto, Writing writing, String appName){
+
+        String srchPrefix    = writing.getSrchPrefix();
+
+        //크롤링 정보 입력
+        String keywords    = crawlingDto.getSrhchKeywords();
+        String crawlingNum = Long.toString(crawlingDto.getCrawlingNum());
+        String requestUrl  = crawlingUrl + "/" + appName + "/" + srchPrefix + "/" + keywords + "/" + crawlingNum;
+        crawlingDto.setRequestUrl(requestUrl);
+
+        return  crawlingDto;
     }
 }
