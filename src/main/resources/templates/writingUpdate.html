@@ -10,8 +10,26 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script>
+    function init(){
+        var writingDivCd = [[${writing.writingDivCd}]];
+        if (writingDivCd == "10") {
+            $("div[name=writingRegDivCd]").hide();
+            $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
+
+            $("#writingRegDivCd10").show();
+            $("#writingRegDivCd10").find("input, select, button, textarea").prop("disabled", false);
+        } else if(writingDivCd == "40"){
+            $("div[name=writingRegDivCd]").hide();
+            $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
+
+            $("#writingRegDivCd40").show();
+            $("#writingRegDivCd40").find("input, select, button, textarea").prop("disabled", false);
+        }
+    }
+
     window.onload = function () {
         bindObjectEvt();
+        init();
     }
 </script>
 <body>
@@ -26,7 +44,20 @@
     <input type="hidden" name="writingNo" th:value="${writing.writingNo}" />
     <input type="hidden" name="writingDivCd" th:value="${writing.writingDivCd}" checked="checked">
 
-    <div id="writingRegDivCd10" style="margin-left: auto; margin-right: auto; width: 65%;">
+    <div id="writingRegDivCd10" name="writingRegDivCd" style="margin-left: auto; margin-right: auto; width: 65%;">
+
+        <input name="addBtn" type="button" value="이미지 추가" onclick="addImgFile()">
+
+        <button type="submit">사진 업로드</button>
+
+        <p>
+            이미지: <input type="file" name="oriImgFile"   style="width:200px">
+            정답: <input type="text" name="answer" style="width:200px">
+        </p>
+
+    </div>
+
+    <div id="writingRegDivCd40" name="writingRegDivCd" style="display:none; margin-left: auto; margin-right: auto; width: 65%;" >
 
         <input name="addBtn" type="button" value="이미지 추가" onclick="addImgFile()">
 
