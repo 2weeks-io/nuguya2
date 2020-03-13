@@ -43,6 +43,8 @@ function addImgFile(){
         $("#writingRegDivCd10").append(str);
     } else if(writingDivCd === '20'){
         $("#writingRegDivCd20").append(str);
+    } else if(writingDivCd === '40'){
+        $("#writingRegDivCd20").append(str);
     }
 
 }
