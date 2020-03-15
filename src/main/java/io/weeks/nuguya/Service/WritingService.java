@@ -378,8 +378,8 @@ public class WritingService {
         return resultMap;
     }
 
-    public Map<String, Object> updateWriting(Writing writing, MultipartHttpServletRequest multipartRequest) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+    public String updateWriting(Writing writing, MultipartHttpServletRequest multipartRequest) {
+        String resultMsg = "success";
 
         try{
 
@@ -424,10 +424,11 @@ public class WritingService {
             }
 
         } catch(Exception e){
+            resultMsg = "fail";
             throw new RuntimeException(e);
         }
 
-        return resultMap;
+        return resultMsg;
     }
 
     public CrawlingDto setCrawlingInfo(CrawlingDto crawlingDto, Writing writing, String appName){

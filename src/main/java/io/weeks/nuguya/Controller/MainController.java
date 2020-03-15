@@ -33,6 +33,7 @@ public class MainController {
         return "소스변경 반영 테스트!!!!";
     }
 
+
     /*
      ** 게임 유형 리스트 조회 (메인페이지)
      */

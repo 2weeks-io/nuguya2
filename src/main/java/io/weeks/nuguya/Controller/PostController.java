@@ -64,7 +64,7 @@ public class PostController {
      ** 게시글 상세 데이터 추가
      */
     @PostMapping(value = "/write/detail")
-    public String updateWrite(HttpServletRequest request, HttpSession session, Writing writing) throws Exception{
+    public @ResponseBody Map<String, Object> updateWrite(HttpServletRequest request, HttpSession session, Writing writing) throws Exception{
 
         writing.setRegpeId(session.toString());
         writing.setModpeId(session.toString());
@@ -72,9 +72,12 @@ public class PostController {
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
 
-        Map<String, Object> resultMap = writingService.updateWriting(writing, multipartRequest);
+        String resultMsg = writingService.updateWriting(writing, multipartRequest);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("resultMsg", resultMsg);
+        resultMap.put("writing", writing);
 
-        return "nuguyaMenu";
+        return resultMap;
     }
 
     /*

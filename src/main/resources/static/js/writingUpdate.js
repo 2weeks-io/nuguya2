@@ -29,6 +29,41 @@ function bindObjectEvt() {
         });
 
     });
+
+}
+
+//누구야 메뉴 페이지 이동
+function goNuguyaMenu(){
+    window.location.href = '/nuguya';
+}
+
+function updateWritingDtl() {
+
+    var form = $('#dataForm')[0];
+    var data = new FormData(form);
+    var url = "/nuguya/write/detail"
+
+    $("#submitBtn").prop("disabled", true);
+
+    $.ajax({
+        enctype     : 'multipart/form-data',
+        url         : url,
+        processData : false,
+        contentType : false,
+        type        : "POST",
+        data        : data,
+        cache       : false,
+        timeout     : 600000,
+        success     : function(result){
+            alert("게시글이 업데이트 되었습니다.");
+            $("#submitBtn").prop("disabled", false);
+            window.location.href = '/nuguya/page/writingUpdate/' + result.writing.writingNo;
+        },
+        error       : function(jqXhr, status, error){
+            alert("게시글 업데이트가 실패하였습니다.");
+            $("#submitBtn").prop("disabled", false);
+        }
+    });
 }
 
 function addImgFile(){

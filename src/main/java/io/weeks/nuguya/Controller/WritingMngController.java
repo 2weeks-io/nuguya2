@@ -29,6 +29,11 @@ public class WritingMngController {
     @Value("${weeks.reqServerUrl}")
     private String reqServerUrl;
 
+    @GetMapping("/")
+    public String main(Model model) {
+        return "nuguyaMenu";
+    }
+
     /*
      ** 누구야 관리페이지
      */

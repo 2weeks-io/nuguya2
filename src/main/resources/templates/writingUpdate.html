@@ -35,23 +35,25 @@
 <body>
 
 <div style="margin-left: auto; margin-right: auto; width: 65%;">
+        <button type="button" name="menuBtn" id="menuBtn" onclick="goNuguyaMenu()">누구야 메뉴 이동</button>
     <h1 게시글번호 th:text="@{게시글번호 : } + ${writing.writingNo}"></h1>
     <h1 게시물이름 th:text="@{게시물이름 : } + ${writing.title}"></h1>
 </div>
 
-<form action="/nuguya/write/detail" id="dataForm" method="post" enctype="multipart/form-data">
+<form id="dataForm" method="POST" enctype="multipart/form-data">
 
     <input type="hidden" name="writingNo" th:value="${writing.writingNo}" />
     <input type="hidden" name="writingDivCd" th:value="${writing.writingDivCd}" checked="checked">
 
+    <div style="margin-left: auto; margin-right: auto; width: 65%;">
+        <input name="addBtn" type="button" value="이미지 추가" onclick="addImgFile()">
+        <button type="button" name="submitBtn" id="submitBtn" onclick="updateWritingDtl()">사진 업로드</button>
+    </div>
+
     <div id="writingRegDivCd10" name="writingRegDivCd" style="margin-left: auto; margin-right: auto; width: 65%;">
 
-        <input name="addBtn" type="button" value="이미지 추가" onclick="addImgFile()">
-
-        <button type="submit">사진 업로드</button>
-
         <p>
-            이미지: <input type="file" name="oriImgFile"   style="width:200px">
+            이미지: <input type="file" name="oriImgFile" style="width:200px">
             정답: <input type="text" name="answer" style="width:200px">
         </p>
 
@@ -59,12 +61,8 @@
 
     <div id="writingRegDivCd40" name="writingRegDivCd" style="display:none; margin-left: auto; margin-right: auto; width: 65%;" >
 
-        <input name="addBtn" type="button" value="이미지 추가" onclick="addImgFile()">
-
-        <button type="submit">사진 업로드</button>
-
         <p>
-            이미지: <input type="file" name="oriImgFile"   style="width:200px">
+            이미지: <input type="file" name="oriImgFile" style="width:200px">
             정답: <input type="text" name="answer" style="width:200px">
         </p>
 
