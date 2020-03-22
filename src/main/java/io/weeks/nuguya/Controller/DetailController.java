@@ -61,7 +61,7 @@ public class DetailController {
                 writingDtlList = writingService.setRandomAnser(writing, writingDtlList, randAnswerNum);
 
             } else if("20".equals(writingDtlCd)){
-                pageable = PageRequest.of(0, pageSize, Sort.by("regDts").descending());
+                pageable = PageRequest.of(0, pageSize, Sort.by("regDts").ascending());
 
                 writingDtlList = writingService.getWritingList(writing, pageable);
 
