@@ -23,6 +23,8 @@ public class Writing extends BaseTimeEntity {
 
     private String writingDivCd;
 
+    private String writingDtlCd;
+
     private String title;
 
     private String titleImgPath;
@@ -56,10 +58,13 @@ public class Writing extends BaseTimeEntity {
     private List<String> answer;
 
     @Transient
-    private List<String> members;
+    private List<String> example1;
 
     @Transient
-    private String shareDivCd; //게시글 구분 코드
+    private List<String> example2;
+
+    @Transient
+    private String shareDivCd;
 
     @OneToMany(mappedBy="writing")
     @JsonManagedReference

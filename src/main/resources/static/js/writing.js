@@ -14,29 +14,59 @@ function bindObjectEvt() {
             
             $("#writingRegDivCd10").show();
             $("#writingRegDivCd10").find("input, select, button, textarea").prop("disabled", false);
+
+            $("#writingDtlTypeBox").hide();
         } else if (writingDivCd === "20") {
             $("div[name=writingRegDivCd]").hide();
             $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
 
             $("#writingRegDivCd20").show();
             $("#writingRegDivCd20").find("input, select, button, textarea").prop("disabled", false);
+
+            $("#writingDtlTypeBox").hide();
         } else if(writingDivCd === "30"){
             $("div[name=writingRegDivCd]").hide();
             $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
 
             $("#writingRegDivCd30").show();
             $("#writingRegDivCd30").find("input, select, button, textarea").prop("disabled", false);
+
+            $("#writingDtlTypeBox").hide();
         } else if(writingDivCd === "40"){
             $("div[name=writingRegDivCd]").hide();
             $("div[name=writingRegDivCd]").find("input, select, button, textarea").prop("disabled", true);
 
             $("#writingRegDivCd40").show();
             $("#writingRegDivCd40").find("input, select, button, textarea").prop("disabled", false);
+
+            $("#writingDtlTypeBox").show();
         }
 
         $("input:radio[name='writingDivCd']:radio[value='"+ writingDivCd + "']").prop("checked",true);
     });
 
+    //게시글 유형 상세 클릭 시
+    $("input:radio[name=writingDtlCd]").click(function () {
+        var writingDivCd = $("input[name=writingDivCd]:checked").val();
+        var writingDtlCd = $("input[name=writingDtlCd]:checked").val();
+
+        if(writingDivCd == '40'){
+
+            if(writingDtlCd == '10'){
+                $("div[name=dirEnrollBox]").hide();
+                $("div[name=crawEnrollBox]").show();
+            } else if(writingDtlCd == '20'){
+                $("div[name=dirEnrollBox]").show();
+                $("div[name=crawEnrollBox]").hide();
+            }
+
+        } else{
+
+        }
+
+    });
+
+    <!-- 테스트 유형 게임(만들다가 일단 중단) -->
     $("input:button[name=addTestTypeBtn]").click(function () {
 
         var targets = $("#target").val();
@@ -54,10 +84,6 @@ function bindObjectEvt() {
             $("#writingScoreTbl").append(tableHeader);
         }
 
-
-    });
-
-    $("input:button[name=addQuestion]").click(function () {
 
     });
 

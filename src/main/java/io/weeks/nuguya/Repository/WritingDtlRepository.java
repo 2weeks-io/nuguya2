@@ -15,6 +15,8 @@ public interface WritingDtlRepository extends JpaRepository<WritingDtl, Long> {
     @Query("select w from WritingDtl w where w.writingNo = :writingNo order by function('RAND')")
     Page<WritingDtl> findByRandomWritingNo(@Param("writingNo") Long writingNo, Pageable pageable);
 
+    List<WritingDtl> findByWritingNo(Pageable pageable, Long writingNo);
+
     List<WritingDtl> findByWritingNo(Integer writingNo);
 
     List<WritingDtl> findByWritingNoOrderByRegDtsDesc(Long writingNo);

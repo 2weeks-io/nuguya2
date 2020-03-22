@@ -6,14 +6,13 @@ import io.weeks.nuguya.Service.WritingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class DetailController {
@@ -36,20 +35,48 @@ public class DetailController {
         try {
             writing = writingService.getWriting(writing);
 
-            double averageNum = (double)writing.getScore() / (double)writing.getParticiNum();
+            double particiNum = (double)writing.getParticiNum();
+
+            if(particiNum == 0){
+                particiNum = 1;
+            }
+
+            double averageNum = (double)writing.getScore() / particiNum;
             averageNum = Math.round(averageNum*10)/10.0;
             writing.setAverageNum(averageNum);
 
-            pageable = PageRequest.of(0, pageSize);
+
+
+            String writingDtlCd = writing.getWritingDtlCd();
 
             //게시글 상세 내역 조회
-            List<WritingDtl> writingDtlList = writingService.getRandomWritingDtl(writingNo, pageable);
+            List<WritingDtl> writingDtlList = new ArrayList<WritingDtl>();
 
-            int randAnswerNum = 3; //보기개수
-            writingDtlList = writingService.setRandomAnser(writing, writingDtlList, randAnswerNum);
-            List<String> members = writingService.getMembers(5, writingDtlList);
+            if("10".equals(writingDtlCd)) {
+                pageable = PageRequest.of(0, pageSize);
 
-            writing.setMembers(members);
+                writingDtlList = writingService.getRandomWritingDtl(writingNo, pageable);
+
+                int randAnswerNum = 3; //보기개수
+                writingDtlList = writingService.setRandomAnser(writing, writingDtlList, randAnswerNum);
+
+            } else if("20".equals(writingDtlCd)){
+                pageable = PageRequest.of(0, pageSize, Sort.by("regDts").descending());
+
+                writingDtlList = writingService.getWritingList(writing, pageable);
+
+                //보기 셔플
+                for(WritingDtl writingDtl : writingDtlList){
+                    List<String> randAnswerList = new ArrayList<String>();
+                    randAnswerList.add(writingDtl.getAnswer());
+                    randAnswerList.add(writingDtl.getExample1());
+                    randAnswerList.add(writingDtl.getExample2());
+                    Collections.shuffle(randAnswerList);
+                    writingDtl.setRandAnswer(randAnswerList);
+                }
+
+            }
+
             writing.setWritingDtlList(writingDtlList);
         } catch(Exception e){
             e.printStackTrace();

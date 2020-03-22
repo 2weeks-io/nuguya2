@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -35,6 +36,10 @@ public class WritingDtl extends BaseTimeEntity{
 
     private String answer;
 
+    private String example1;
+
+    private String example2;
+
     private String regpeId;
 
     private String modpeId;
@@ -42,6 +47,6 @@ public class WritingDtl extends BaseTimeEntity{
     private String question;
 
     @Transient
-    private String randAnswer;
+    private List<String> randAnswer;
 
 }
