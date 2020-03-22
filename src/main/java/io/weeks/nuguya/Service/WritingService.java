@@ -456,8 +456,8 @@ public class WritingService {
                 writingDtl.setRegpeId(writing.getRegpeId());
                 writingDtl.setModpeId(writing.getModpeId());
                 writingDtl.setAnswer(answer);
-                writingDtl.setExample1(answer);
-                writingDtl.setExample2(answer);
+                writingDtl.setExample1(example1);
+                writingDtl.setExample2(example2);
                 writingDtl.setWritingNo(newWriting.getWritingNo());
 
                 //이미지 경로 저장
