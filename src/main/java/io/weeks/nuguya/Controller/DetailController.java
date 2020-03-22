@@ -3,6 +3,8 @@ package io.weeks.nuguya.Controller;
 import io.weeks.nuguya.Entity.Writing;
 import io.weeks.nuguya.Entity.WritingDtl;
 import io.weeks.nuguya.Service.WritingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +18,8 @@ import java.util.*;
 
 @RestController
 public class DetailController {
+
+    private static final Logger logger = LoggerFactory.getLogger(DetailController.class);
 
     @Autowired
     private WritingService writingService;
@@ -57,8 +61,12 @@ public class DetailController {
 
                 writingDtlList = writingService.getRandomWritingDtl(writingNo, pageable);
 
+                logger.info("상세 페이징 조회 결과 : " + writingDtlList.toString());
+
                 int randAnswerNum = 3; //보기개수
                 writingDtlList = writingService.setRandomAnser(writing, writingDtlList, randAnswerNum);
+
+                logger.info("랜덤 보기 세팅 결과 : " + writingDtlList.toString());
 
             } else if("20".equals(writingDtlCd)){
                 pageable = PageRequest.of(0, pageSize, Sort.by("regDts").ascending());
@@ -78,6 +86,9 @@ public class DetailController {
             }
 
             writing.setWritingDtlList(writingDtlList);
+
+            logger.info("게시글 결과 : " + writing.toString());
+
         } catch(Exception e){
             e.printStackTrace();
             resultMsg = "fail";
