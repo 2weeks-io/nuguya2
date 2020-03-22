@@ -61,12 +61,8 @@ public class DetailController {
 
                 writingDtlList = writingService.getRandomWritingDtl(writingNo, pageable);
 
-                logger.info("상세 페이징 조회 결과 : " + writingDtlList.toString());
-
                 int randAnswerNum = 3; //보기개수
                 writingDtlList = writingService.setRandomAnser(writing, writingDtlList, randAnswerNum);
-
-                logger.info("랜덤 보기 세팅 결과 : " + writingDtlList.toString());
 
             } else if("20".equals(writingDtlCd)){
                 pageable = PageRequest.of(0, pageSize, Sort.by("regDts").ascending());
@@ -86,8 +82,6 @@ public class DetailController {
             }
 
             writing.setWritingDtlList(writingDtlList);
-
-            logger.info("게시글 결과 : " + writing.toString());
 
         } catch(Exception e){
             e.printStackTrace();
